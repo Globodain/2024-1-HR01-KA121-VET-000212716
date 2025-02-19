@@ -48,11 +48,11 @@ export default function CityInfoMain({ data }: Props) {
   const currentCity = data[0] // Using first city as current
 
   return (
-    <div className="w-full space-y-4">
+    <div className="w-full space-y-2">
       <div className="flex justify-between items-start">
         <div className="bg-[#0080c0] text-white p-4 rounded-lg">
           <div className="text-3xl font-bold">
-            {currentCity.temperature} {currentCity.name}
+            {currentCity.temperature}°C {currentCity.name}
           </div>
           <div className="text-xl">{currentCity.country}</div>
           <div className="text-sm">
