@@ -10,7 +10,7 @@ import { Input } from "./ui/input";
 
 const Navbar = () => {
     return ( 
-        <div className="flex items-center justify-between p-6 shadow-lg bg-[#004079] shadow-2xs m-3 rounded-xl h-16">
+        <div className="flex items-center justify-between p-6 shadow-lg bg-[#004079] shadow-2xs mr-5 ml-5 mt-3 rounded-xl h-16">
             <div className="flex items-center gap-4">
                 <Image 
                     width={40} 
