@@ -50,7 +50,7 @@ export default function CityInfoMain({ data }: Props) {
   return (
     <div className="w-full space-y-2">
       <div className="flex justify-between items-start">
-        <div className="bg-[#0080c0] text-white p-4 rounded-3xl shadow-xl">
+        <div className="bg-[#0080c0] text-white p-4 mb-2 rounded-3xl shadow-xl">
           <div className="text-3xl font-bold">
             {currentCity.temperature}°C {currentCity.name}
           </div>
