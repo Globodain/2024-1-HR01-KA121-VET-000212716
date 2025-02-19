@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import {
+  ClerkProvider,
+} from "@clerk/nextjs";
 import "./globals.css";
 
 const inter = Inter({
@@ -8,8 +11,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "SkyCast Weather App", 
-  description: "A weather app that shows the current weather and forecast for the next 7 days.",
+  title: "SkyCast Weather App",
+  description:
+    "A weather app that shows the current weather and forecast for the next 7 days.",
 };
 
 export default function RootLayout({
@@ -18,10 +22,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} antialiased`}>
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={`${inter.variable} antialiased`}>{children}</body>
+      </html>
+    </ClerkProvider>
   );
 }

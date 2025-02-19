@@ -75,7 +75,7 @@ const getWeatherIcon = (weather: string) => {
 
 const Sidebar = () => {
   return (
-    <div className="flex flex-wrap items-center justify-center p-2 shadow-lg w-1/4 shadow-2xs m-5 rounded-xl h-auto bg-[#add8e6] space-y-1">
+    <div className="flex flex-wrap items-center justify-center p-2 shadow-lg w-1/4 shadow-2xs m-3 rounded-xl h-auto bg-[#add8e6] space-y-1">
       {sampleData.map((city, index) => (
         <Card key={index} className="flex justify-between p-1.5 mb-1 bg-[#007cbd] border-none w-full h-auto rounded-full shadow-md">
           <h1 className="text-white text-lg font-extralight pl-1">{city.name}</h1>
