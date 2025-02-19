@@ -14,7 +14,7 @@ const MainInfoContainer = () => {
   ];
 
   return (
-    <div className="flex items-center p-6 shadow-lg w-full h-full shadow-2xs m-5 rounded-xl bg-[#add8e6]">
+    <div className="flex items-center p-4 shadow-lg w-full h-full m-5 rounded-3xl bg-[#add8e6]">
       <CityInfoMain data={sampleData} />
     </div>
   );
