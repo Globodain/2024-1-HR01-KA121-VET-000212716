@@ -41,23 +41,26 @@ const formatTime = (timestamp: number) => {
 
 export default function CityInfoMain({ data, loading }: Props) {
   const shadowClass = loading ? '' : 'shadow-xl';
-  
+
   return (
     <div className="w-full space-y-4">
       <div className="flex justify-between items-start">
-        <div className={`bg-[#007cdf] text-white p-4 mb-2 rounded-3xl ${shadowClass}`}>
-          <div className="text-3xl font-bold">
-            {Math.round(data.temperature.current)}°C {data.city}
-          </div>
-          <div className="text-xl">{data.country}</div>
-          <div className="flex items-center gap-2">
-            <span>{data.weather.description}</span>
-            {getWeatherIcon(data.weather.main)}
-          </div>
-          <div className="text-sm">
-            H: {Math.round(data.temperature.max)}° L: {Math.round(data.temperature.min)}°
+        <div className=" bg-white p-2 rounded-3xl">
+          <div className={`bg-[#007cdf] text-white p-4 rounded-3xl ${shadowClass}`}>
+            <div className="text-3xl font-bold">
+              {Math.round(data.temperature.current)}°C {data.city}
+            </div>
+            <div className="text-xl">{data.country}</div>
+            <div className="flex items-center gap-2">
+              <span>{data.weather.description}</span>
+              {getWeatherIcon(data.weather.main)}
+            </div>
+            <div className="text-sm">
+              H: {Math.round(data.temperature.max)}° L: {Math.round(data.temperature.min)}°
+            </div>
           </div>
         </div>
+
         <Select>
           <SelectTrigger className="w-[80px]">
             <SelectValue placeholder="Unit" />
@@ -68,6 +71,7 @@ export default function CityInfoMain({ data, loading }: Props) {
           </SelectContent>
         </Select>
       </div>
+
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-white">
         {['Feels Like', 'Wind Speed', 'Humidity'].map((title) => (
@@ -100,8 +104,7 @@ export default function CityInfoMain({ data, loading }: Props) {
         ))}
       </div>
 
-      <div className="mt-6">
-        <h2 className="text-xl font-semibold mb-4 text-white">Today&apos;s Forecast</h2>
+      <div className="mt-6 bg-white p-4 rounded-2xl">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2 overflow-x-auto">
           {data.hourlyForecast.map((hour) => (
             <div
@@ -114,7 +117,7 @@ export default function CityInfoMain({ data, loading }: Props) {
                 <div className="font-medium">
                   {formatTime(hour.time)}
                 </div>
-                <img 
+                <img
                   src={`http://openweathermap.org/img/wn/${hour.weather.icon}@2x.png`}
                   alt={hour.weather.description}
                   className="w-12 h-12 mx-auto"
