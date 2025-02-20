@@ -1,17 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-    SignInButton,
-    SignedIn,
-    SignedOut,
-    UserButton
-  } from '@clerk/nextjs'
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { Input } from "./ui/input";
 
 const Navbar = () => {
     return ( 
         <div className="flex items-center justify-between p-6 shadow-lg bg-[#007cdf] shadow-2xs mr-5 ml-5 mt-3 rounded-xl h-16">
-            <div className="flex items-center justify-center gap-4">
+            <div className="flex items-center gap-4">
                 <Image 
                     width={80} 
                     height={80} 
@@ -28,28 +23,30 @@ const Navbar = () => {
                 />
             </div>
 
-            <nav className="flex items-center gap-8">
-                <Link 
-                    href="/" 
-                    className="text-white hover:text-gray-200 transition-colors duration-200 text-lg"
-                >
-                    Home
-                </Link>
-                <Link 
-                    href="/help" 
-                    className="text-white hover:text-gray-200 transition-colors duration-200 text-lg"
-                >
-                    Help
-                </Link>
-                <SignedOut>
+      <nav className="flex items-center gap-8">
+        <Link
+          href="/"
+          className="text-white hover:text-gray-200 transition-colors duration-200 text-lg"
+        >
+          Home
+        </Link>
+        <Link
+          href="/help"
+          className="text-white hover:text-gray-200 transition-colors duration-200 text-lg"
+        >
+          Help
+        </Link>
+        <div className="text-white">
+          <SignedOut>
             <SignInButton />
           </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-            </nav>
         </div>
-     );
-}
- 
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+      </nav>
+    </div>
+  );
+};
+
 export default Navbar;
