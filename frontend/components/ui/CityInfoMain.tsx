@@ -1,4 +1,4 @@
-import { Sun, Cloud, CloudRain } from "lucide-react"
+import { Sun, Cloud, CloudRain, CloudLightning, CloudFog, Wind, Droplets } from "lucide-react"
 import {
   Select,
   SelectContent,
@@ -6,64 +6,53 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-
-interface CityData {
-  temperature: number
-  weatherUnit: string
-  weather: string
-  highTemperature: number
-  lowTemperature: number
-  name: string
-  country: string
-}
+import type { WeatherData } from "@/app/api/city/[cityName]/route"
 
 interface Props {
-  data: CityData[]
+  data: WeatherData
 }
 
-const getWeatherIcon = (weather: string) => {
-  switch (weather.toLowerCase()) {
-    case "sunny":
+const getWeatherIcon = (weatherMain: string) => {
+  switch (weatherMain.toLowerCase()) {
+    case "clear":
       return <Sun className="w-5 h-5" />
-    case "cloudy":
+    case "clouds":
       return <Cloud className="w-5 h-5" />
-    case "rainy":
+    case "rain":
+    case "drizzle":
       return <CloudRain className="w-5 h-5" />
+    case "thunderstorm":
+      return <CloudLightning className="w-5 h-5" />
+    case "fog":
+    case "mist":
+      return <CloudFog className="w-5 h-5" />
     default:
       return <Sun className="w-5 h-5" />
   }
 }
 
-const hourlyForecast = [
-  { time: "12:00", temp: 15 },
-  { time: "13:00", temp: 16 },
-  { time: "14:00", temp: 18 },
-  { time: "15:00", temp: 16 },
-]
-
-const weeklyForecast = [
-  { day: "Mon, 1/18", temp: 16 },
-  { day: "Tue, 2/18", temp: 18 },
-  { day: "Wed, 3/18", temp: 3 },
-  { day: "Thu, 4/18", temp: 5 },
-  { day: "Fri, 5/18", temp: 9 },
-  { day: "Sat, 6/18", temp: 12 },
-  { day: "Sun, 7/18", temp: 16 },
-]
+const formatTime = (timestamp: number) => {
+  return new Date(timestamp * 1000).toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    hour12: true
+  });
+};
 
 export default function CityInfoMain({ data }: Props) {
-  const currentCity = data[0]
-
   return (
-    <div className="w-full space-y-2">
+    <div className="w-full space-y-4">
       <div className="flex justify-between items-start">
         <div className="bg-[#007cdf] text-white p-4 mb-2 rounded-3xl shadow-xl">
           <div className="text-3xl font-bold">
-            {currentCity.temperature}°C {currentCity.name}
+            {Math.round(data.temperature.current)}°C {data.city}
           </div>
-          <div className="text-xl">{currentCity.country}</div>
+          <div className="text-xl">{data.country}</div>
+          <div className="flex items-center gap-2">
+            <span>{data.weather.description}</span>
+            {getWeatherIcon(data.weather.main)}
+          </div>
           <div className="text-sm">
-            H: {currentCity.highTemperature} L: {currentCity.lowTemperature}
+            H: {Math.round(data.temperature.max)}° L: {Math.round(data.temperature.min)}°
           </div>
         </div>
         <Select>
@@ -71,36 +60,85 @@ export default function CityInfoMain({ data }: Props) {
             <SelectValue placeholder="Unit" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="celsius" >°C</SelectItem>
+            <SelectItem value="celsius">°C</SelectItem>
             <SelectItem value="fahrenheit">°F</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="md:col-span-2 bg-white p-4 rounded-3xl shadow-xl space-y-2">
-          {hourlyForecast.map((hour) => (
-            <div key={hour.time} className="bg-[#007cdf] text-white p-3 rounded-2xl shadow-lg flex justify-between items-center">
-              <span>{hour.time}</span>
-              <div className="flex items-center gap-2">
-                {hour.temp}° <Sun className="w-5 h-5" />
-              </div>
-            </div>
-          ))}
-          <div className="flex justify-center pt-2">
-            <div className="w-8 h-1 bg-gray-300 rounded-full" />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-white">
+        <div className="bg-[#007cdf] p-4 rounded-2xl shadow-lg">
+          <div className="flex items-center justify-between">
+            <span className="text-lg">Feels Like</span>
+            <span className="text-2xl font-bold">{Math.round(data.temperature.feelsLike)}°C</span>
           </div>
         </div>
+        <div className="bg-[#007cdf] p-4 rounded-2xl shadow-lg">
+          <div className="flex items-center justify-between">
+            <span className="text-lg flex items-center gap-2">
+              <Wind className="w-5 h-5" />
+              Wind Speed
+            </span>
+            <span className="text-2xl font-bold">{data.wind.speed} m/s</span>
+          </div>
+        </div>
+        <div className="bg-[#007cdf] p-4 rounded-2xl shadow-lg">
+          <div className="flex items-center justify-between">
+            <span className="text-lg flex items-center gap-2">
+              <Droplets className="w-5 h-5" />
+              Humidity
+            </span>
+            <span className="text-2xl font-bold">{data.humidity}%</span>
+          </div>
+        </div>
+      </div>
 
-        <div className="bg-white p-4 rounded-3xl shadow-xl space-y-2">
-          {weeklyForecast.map((day) => (
-            <div key={day.day} className="bg-[#007cdf] text-white p-2 rounded-2xl shadow-lg flex justify-between items-center">
-              <span>{day.day}</span>
-              <div className="flex items-center gap-2">
-                {day.temp}° <Sun className="w-5 h-5" />
+      <div className="mt-6">
+        <h2 className="text-xl font-semibold mb-4 text-white">Today's Forecast</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2 overflow-x-auto">
+          {data.hourlyForecast.map((hour, index) => (
+            <div
+              key={hour.time}
+              className="bg-[#007cdf] text-white p-3 rounded-xl shadow-lg 
+                       hover:shadow-xl transition-all duration-200 
+                       transform hover:-translate-y-1"
+            >
+              <div className="text-center">
+                <div className="font-medium">
+                  {formatTime(hour.time)}
+                </div>
+                <img 
+                  src={`http://openweathermap.org/img/wn/${hour.weather.icon}@2x.png`}
+                  alt={hour.weather.description}
+                  className="w-12 h-12 mx-auto"
+                />
+                <div className="text-2xl font-bold">
+                  {Math.round(hour.temp)}°
+                </div>
+                <div className="text-xs capitalize">
+                  {hour.weather.description}
+                </div>
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      <div className="mt-6 bg-[#007cdf] p-4 rounded-2xl shadow-lg text-white">
+        <h2 className="text-xl font-semibold mb-3">Additional Details</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div>
+            <div className="text-sm opacity-80">Pressure</div>
+            <div className="text-lg font-bold">{data.pressure} hPa</div>
+          </div>
+          <div>
+            <div className="text-sm opacity-80">Visibility</div>
+            <div className="text-lg font-bold">{data.visibility / 1000} km</div>
+          </div>
+          <div>
+            <div className="text-sm opacity-80">Wind Direction</div>
+            <div className="text-lg font-bold">{data.wind.direction}°</div>
+          </div>
         </div>
       </div>
     </div>
