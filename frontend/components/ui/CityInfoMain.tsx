@@ -1,4 +1,11 @@
 import { Sun, Cloud, CloudRain } from "lucide-react"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 interface CityData {
   temperature: number
@@ -59,10 +66,15 @@ export default function CityInfoMain({ data }: Props) {
             H: {currentCity.highTemperature} L: {currentCity.lowTemperature}
           </div>
         </div>
-        <select className="p-2 rounded-2xl border border-gray-300">
-          <option value="celsius">C°</option>
-          <option value="fahrenheit">F°</option>
-        </select>
+        <Select>
+          <SelectTrigger className="w-[80px]">
+            <SelectValue placeholder="Unit" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="celsius">°C</SelectItem>
+            <SelectItem value="fahrenheit">°F</SelectItem>
+          </SelectContent>
+        </Select>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
