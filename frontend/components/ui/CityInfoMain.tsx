@@ -57,7 +57,7 @@ export default function CityInfoMain({ data }: Props) {
   return (
     <div className="w-full space-y-2">
       <div className="flex justify-between items-start">
-        <div className="bg-[#0080c0] text-white p-4 mb-2 rounded-3xl shadow-xl">
+        <div className="bg-[#007cdf] text-white p-4 mb-2 rounded-3xl shadow-xl">
           <div className="text-3xl font-bold">
             {currentCity.temperature}°C {currentCity.name}
           </div>
@@ -80,7 +80,7 @@ export default function CityInfoMain({ data }: Props) {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="md:col-span-2 bg-white p-4 rounded-3xl shadow-xl space-y-2">
           {hourlyForecast.map((hour) => (
-            <div key={hour.time} className="bg-[#0080c0] text-white p-3 rounded-2xl shadow-lg flex justify-between items-center">
+            <div key={hour.time} className="bg-[#007cdf] text-white p-3 rounded-2xl shadow-lg flex justify-between items-center">
               <span>{hour.time}</span>
               <div className="flex items-center gap-2">
                 {hour.temp}° <Sun className="w-5 h-5" />
@@ -94,7 +94,7 @@ export default function CityInfoMain({ data }: Props) {
 
         <div className="bg-white p-4 rounded-3xl shadow-xl space-y-2">
           {weeklyForecast.map((day) => (
-            <div key={day.day} className="bg-[#0080c0] text-white p-2 rounded-2xl shadow-lg flex justify-between items-center">
+            <div key={day.day} className="bg-[#007cdf] text-white p-2 rounded-2xl shadow-lg flex justify-between items-center">
               <span>{day.day}</span>
               <div className="flex items-center gap-2">
                 {day.temp}° <Sun className="w-5 h-5" />
