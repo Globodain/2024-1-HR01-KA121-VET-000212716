@@ -20,6 +20,8 @@ const POPULAR_CITIES = [
   "Chicago",
   "Staševica",
   "Ploče",
+  "Zagreb",
+  "Metković",
 ];
 
 const OPENWEATHER_API_KEY = process.env.OPENWEATHER_API_KEY;
