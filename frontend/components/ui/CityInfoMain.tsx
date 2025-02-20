@@ -94,9 +94,9 @@ export default function CityInfoMain({ data }: Props) {
       </div>
 
       <div className="mt-6">
-        <h2 className="text-xl font-semibold mb-4 text-white">Today's Forecast</h2>
+        <h2 className="text-xl font-semibold mb-4 text-white">Today&apos;s Forecast</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2 overflow-x-auto">
-          {data.hourlyForecast.map((hour, index) => (
+          {data.hourlyForecast.map((hour) => (
             <div
               key={hour.time}
               className="bg-[#007cdf] text-white p-3 rounded-xl shadow-lg 
