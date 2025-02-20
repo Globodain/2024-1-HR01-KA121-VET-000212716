@@ -10,6 +10,7 @@ import type { WeatherData } from "@/app/api/city/[cityName]/route"
 
 interface Props {
   data: WeatherData
+  loading?: boolean
 }
 
 const getWeatherIcon = (weatherMain: string) => {
@@ -38,11 +39,13 @@ const formatTime = (timestamp: number) => {
   });
 };
 
-export default function CityInfoMain({ data }: Props) {
+export default function CityInfoMain({ data, loading }: Props) {
+  const shadowClass = loading ? '' : 'shadow-xl';
+  
   return (
     <div className="w-full space-y-4">
       <div className="flex justify-between items-start">
-        <div className="bg-[#007cdf] text-white p-4 mb-2 rounded-3xl shadow-xl">
+        <div className={`bg-[#007cdf] text-white p-4 mb-2 rounded-3xl ${shadowClass}`}>
           <div className="text-3xl font-bold">
             {Math.round(data.temperature.current)}°C {data.city}
           </div>
@@ -67,30 +70,34 @@ export default function CityInfoMain({ data }: Props) {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-white">
-        <div className="bg-[#007cdf] p-4 rounded-2xl shadow-lg">
-          <div className="flex items-center justify-between">
-            <span className="text-lg">Feels Like</span>
-            <span className="text-2xl font-bold">{Math.round(data.temperature.feelsLike)}°C</span>
+        {['Feels Like', 'Wind Speed', 'Humidity'].map((title) => (
+          <div key={title} className={`bg-[#007cdf] p-4 rounded-2xl ${shadowClass}`}>
+            {title === 'Feels Like' && (
+              <div className="flex items-center justify-between">
+                <span className="text-lg">Feels Like</span>
+                <span className="text-2xl font-bold">{Math.round(data.temperature.feelsLike)}°C</span>
+              </div>
+            )}
+            {title === 'Wind Speed' && (
+              <div className="flex items-center justify-between">
+                <span className="text-lg flex items-center gap-2">
+                  <Wind className="w-5 h-5" />
+                  Wind Speed
+                </span>
+                <span className="text-2xl font-bold">{data.wind.speed} m/s</span>
+              </div>
+            )}
+            {title === 'Humidity' && (
+              <div className="flex items-center justify-between">
+                <span className="text-lg flex items-center gap-2">
+                  <Droplets className="w-5 h-5" />
+                  Humidity
+                </span>
+                <span className="text-2xl font-bold">{data.humidity}%</span>
+              </div>
+            )}
           </div>
-        </div>
-        <div className="bg-[#007cdf] p-4 rounded-2xl shadow-lg">
-          <div className="flex items-center justify-between">
-            <span className="text-lg flex items-center gap-2">
-              <Wind className="w-5 h-5" />
-              Wind Speed
-            </span>
-            <span className="text-2xl font-bold">{data.wind.speed} m/s</span>
-          </div>
-        </div>
-        <div className="bg-[#007cdf] p-4 rounded-2xl shadow-lg">
-          <div className="flex items-center justify-between">
-            <span className="text-lg flex items-center gap-2">
-              <Droplets className="w-5 h-5" />
-              Humidity
-            </span>
-            <span className="text-2xl font-bold">{data.humidity}%</span>
-          </div>
-        </div>
+        ))}
       </div>
 
       <div className="mt-6">
@@ -99,9 +106,9 @@ export default function CityInfoMain({ data }: Props) {
           {data.hourlyForecast.map((hour) => (
             <div
               key={hour.time}
-              className="bg-[#007cdf] text-white p-3 rounded-xl shadow-lg 
+              className={`bg-[#007cdf] text-white p-3 rounded-xl 
                        hover:shadow-xl transition-all duration-200 
-                       transform hover:-translate-y-1"
+                       transform hover:-translate-y-1 ${shadowClass}`}
             >
               <div className="text-center">
                 <div className="font-medium">
@@ -124,7 +131,7 @@ export default function CityInfoMain({ data }: Props) {
         </div>
       </div>
 
-      <div className="mt-6 bg-[#007cdf] p-4 rounded-2xl shadow-lg text-white">
+      <div className={`mt-6 bg-[#007cdf] p-4 rounded-2xl text-white ${shadowClass}`}>
         <h2 className="text-xl font-semibold mb-3">Additional Details</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <div>
@@ -142,6 +149,6 @@ export default function CityInfoMain({ data }: Props) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 

@@ -28,18 +28,16 @@ const MainInfoContainer = () => {
   }, []);
 
   if (loading) return (
-    <div className="flex items-center p-6 w-full h-full m-20">
-      <div className="flex items-center justify-center w-full">
-        <Image src="/loading.svg" alt="loading svg" width={80} height={80} />
-      </div>
+    <div className="flex items-center justify-center fixed inset-0 z-50">
+      <Image src="/loading.gif" alt="loading svg" width={380} height={380} />
     </div>
   );
   if (error) return <div>Error: {error}</div>;
   if (!weatherData) return <div>No data available</div>;
 
   return (
-    <div className="flex items-center p-6 shadow-lg w-full h-full shadow-2xs m-5 rounded-xl bg-[#add8e6]">
-      <CityInfoMain data={weatherData} />
+    <div className={`flex items-center p-6 w-full h-full m-5 rounded-xl ${!loading && 'shadow-lg shadow-2xs bg-[#add8e6]'}`}>
+      <CityInfoMain data={weatherData} loading={loading} />
     </div>
   );
 };
