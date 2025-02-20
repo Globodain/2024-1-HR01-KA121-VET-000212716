@@ -1,6 +1,24 @@
 // app/api/city/[cityName]/route.ts
 import { NextResponse } from 'next/server';
 
+export interface WeatherData {
+  city: string
+  country: string
+  weather: {
+    main: string
+    description: string
+    icon: string
+    iconUrl: string
+  }
+  temperature: {
+    current: number
+    feelsLike: number
+    min: number
+    max: number
+  }
+  // ... other properties if needed ...
+}
+
 // Get your API key by signing up at OpenWeatherMap
 const OPENWEATHER_API_KEY = process.env.OPEN_WEATHER_API;
 const OPENWEATHER_BASE_URL = 'https://api.openweathermap.org/data/2.5';

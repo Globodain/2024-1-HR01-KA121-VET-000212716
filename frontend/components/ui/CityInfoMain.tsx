@@ -1,4 +1,4 @@
-import { Sun, Cloud, CloudRain } from "lucide-react"
+import { Sun, Cloud, CloudRain, CloudLightning, CloudFog } from "lucide-react"
 import {
   Select,
   SelectContent,
@@ -6,64 +6,46 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-
-interface CityData {
-  temperature: number
-  weatherUnit: string
-  weather: string
-  highTemperature: number
-  lowTemperature: number
-  name: string
-  country: string
-}
+import type { WeatherData } from "@/app/api/city/[cityName]/route"
 
 interface Props {
-  data: CityData[]
+  data: WeatherData
 }
 
-const getWeatherIcon = (weather: string) => {
-  switch (weather.toLowerCase()) {
-    case "sunny":
+const getWeatherIcon = (weatherMain: string) => {
+  switch (weatherMain.toLowerCase()) {
+    case "clear":
       return <Sun className="w-5 h-5" />
-    case "cloudy":
+    case "clouds":
       return <Cloud className="w-5 h-5" />
-    case "rainy":
+    case "rain":
+    case "drizzle":
       return <CloudRain className="w-5 h-5" />
+    case "thunderstorm":
+      return <CloudLightning className="w-5 h-5" />
+    case "fog":
+    case "mist":
+      return <CloudFog className="w-5 h-5" />
     default:
       return <Sun className="w-5 h-5" />
   }
 }
 
-const hourlyForecast = [
-  { time: "12:00", temp: 15 },
-  { time: "13:00", temp: 16 },
-  { time: "14:00", temp: 18 },
-  { time: "15:00", temp: 16 },
-]
-
-const weeklyForecast = [
-  { day: "Mon, 1/18", temp: 16 },
-  { day: "Tue, 2/18", temp: 18 },
-  { day: "Wed, 3/18", temp: 3 },
-  { day: "Thu, 4/18", temp: 5 },
-  { day: "Fri, 5/18", temp: 9 },
-  { day: "Sat, 6/18", temp: 12 },
-  { day: "Sun, 7/18", temp: 16 },
-]
-
 export default function CityInfoMain({ data }: Props) {
-  const currentCity = data[0] // Using first city as current
-
   return (
     <div className="w-full space-y-2">
       <div className="flex justify-between items-start">
         <div className="bg-[#007cdf] text-white p-4 mb-2 rounded-3xl shadow-xl">
           <div className="text-3xl font-bold">
-            {currentCity.temperature}°C {currentCity.name}
+            {Math.round(data.temperature.current)}°C {data.city}
           </div>
-          <div className="text-xl">{currentCity.country}</div>
+          <div className="text-xl">{data.country}</div>
+          <div className="flex items-center gap-2">
+            <span>{data.weather.description}</span>
+            {getWeatherIcon(data.weather.main)}
+          </div>
           <div className="text-sm">
-            H: {currentCity.highTemperature} L: {currentCity.lowTemperature}
+            H: {Math.round(data.temperature.max)}° L: {Math.round(data.temperature.min)}°
           </div>
         </div>
         <Select>
@@ -71,37 +53,15 @@ export default function CityInfoMain({ data }: Props) {
             <SelectValue placeholder="Unit" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="celsius" >°C</SelectItem>
+            <SelectItem value="celsius">°C</SelectItem>
             <SelectItem value="fahrenheit">°F</SelectItem>
           </SelectContent>
         </Select>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="md:col-span-2 bg-white p-4 rounded-3xl shadow-xl space-y-2">
-          {hourlyForecast.map((hour) => (
-            <div key={hour.time} className="bg-[#007cdf] text-white p-3 rounded-2xl shadow-lg flex justify-between items-center">
-              <span>{hour.time}</span>
-              <div className="flex items-center gap-2">
-                {hour.temp}° <Sun className="w-5 h-5" />
-              </div>
-            </div>
-          ))}
-          <div className="flex justify-center pt-2">
-            <div className="w-8 h-1 bg-gray-300 rounded-full" />
-          </div>
-        </div>
-
-        <div className="bg-white p-4 rounded-3xl shadow-xl space-y-2">
-          {weeklyForecast.map((day) => (
-            <div key={day.day} className="bg-[#007cdf] text-white p-2 rounded-2xl shadow-lg flex justify-between items-center">
-              <span>{day.day}</span>
-              <div className="flex items-center gap-2">
-                {day.temp}° <Sun className="w-5 h-5" />
-              </div>
-            </div>
-          ))}
-        </div>
+      {/* Note: Hourly and weekly forecast data would need to come from a different API endpoint */}
+      <div className="text-center p-4">
+        Feels like: {Math.round(data.temperature.feelsLike)}°C
       </div>
     </div>
   )
