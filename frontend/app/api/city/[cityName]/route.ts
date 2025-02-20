@@ -2,21 +2,36 @@
 import { NextResponse } from 'next/server';
 
 export interface WeatherData {
-  city: string
-  country: string
+  city: string;
+  country: string;
   weather: {
-    main: string
-    description: string
-    icon: string
-    iconUrl: string
-  }
+    main: string;
+    description: string;
+    icon: string;
+    iconUrl: string;
+  };
   temperature: {
-    current: number
-    feelsLike: number
-    min: number
-    max: number
-  }
-  // ... other properties if needed ...
+    current: number;
+    feelsLike: number;
+    min: number;
+    max: number;
+  };
+  wind: {
+    speed: number;
+    direction: number;
+  };
+  humidity: number;
+  pressure: number;
+  visibility: number;
+  hourlyForecast: Array<{
+    time: number;
+    temp: number;
+    weather: {
+      main: string;
+      description: string;
+      icon: string;
+    };
+  }>;
 }
 
 // Get your API key by signing up at OpenWeatherMap
@@ -37,21 +52,36 @@ export async function GET(
       );
     }
     
-    // Fetch weather data from OpenWeather API
-    const response = await fetch(
+    // Fetch current weather
+    const currentWeatherResponse = await fetch(
       `${OPENWEATHER_BASE_URL}/weather?q=${cityName}&units=metric&appid=${OPENWEATHER_API_KEY}`,
       { next: { revalidate: 3600 } } // Cache for 1 hour
     );
-    
-    if (!response.ok) {
-      const errorData = await response.json();
+
+    if (!currentWeatherResponse.ok) {
+      const errorData = await currentWeatherResponse.json();
       return NextResponse.json(
         { error: errorData.message || 'Failed to fetch weather data' },
-        { status: response.status }
+        { status: currentWeatherResponse.status }
       );
     }
-    
-    const weatherData = await response.json();
+
+    const weatherData = await currentWeatherResponse.json();
+
+    // Fetch hourly forecast using coordinates
+    const hourlyResponse = await fetch(
+      `${OPENWEATHER_BASE_URL}/forecast?lat=${weatherData.coord.lat}&lon=${weatherData.coord.lon}&units=metric&appid=${OPENWEATHER_API_KEY}`
+    );
+
+    if (!hourlyResponse.ok) {
+      const errorData = await hourlyResponse.json();
+      return NextResponse.json(
+        { error: errorData.message || 'Failed to fetch hourly forecast' },
+        { status: hourlyResponse.status }
+      );
+    }
+
+    const hourlyData = await hourlyResponse.json();
     
     // Format the response with just the data we need
     const formattedResponse = {
@@ -83,7 +113,16 @@ export async function GET(
       sunrise: weatherData.sys.sunrise,
       sunset: weatherData.sys.sunset,
       timestamp: weatherData.dt,
-      timezone: weatherData.timezone
+      timezone: weatherData.timezone,
+      hourlyForecast: hourlyData.list.slice(0, 8).map((hour: any) => ({
+        time: hour.dt,
+        temp: hour.main.temp,
+        weather: {
+          main: hour.weather[0].main,
+          description: hour.weather[0].description,
+          icon: hour.weather[0].icon
+        }
+      }))
     };
     
     return NextResponse.json(formattedResponse);
