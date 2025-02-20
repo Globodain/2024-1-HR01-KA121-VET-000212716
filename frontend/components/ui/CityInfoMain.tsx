@@ -52,7 +52,7 @@ const weeklyForecast = [
 ]
 
 export default function CityInfoMain({ data }: Props) {
-  const currentCity = data[0] // Using first city as current
+  const currentCity = data[0]
 
   return (
     <div className="w-full space-y-2">
