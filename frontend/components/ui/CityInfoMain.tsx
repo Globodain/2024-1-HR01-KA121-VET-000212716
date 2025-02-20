@@ -71,7 +71,7 @@ export default function CityInfoMain({ data }: Props) {
             <SelectValue placeholder="Unit" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="celsius">°C</SelectItem>
+            <SelectItem value="celsius" >°C</SelectItem>
             <SelectItem value="fahrenheit">°F</SelectItem>
           </SelectContent>
         </Select>
