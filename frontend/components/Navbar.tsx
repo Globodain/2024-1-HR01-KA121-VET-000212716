@@ -7,13 +7,6 @@ const Navbar = () => {
     return ( 
         <div className="flex items-center justify-between p-6 shadow-lg bg-[#007cdf] shadow-2xs mr-5 ml-5 mt-3 rounded-xl h-16">
             <div className="flex items-center gap-4">
-                <Image 
-                    width={80} 
-                    height={80} 
-                    src="/SkyCAST_1.0.png" 
-                    alt="Weather app logo"
-                    className="object-contain"
-                />
                 <h1 className="text-white text-2xl font-semibold">SkyCast</h1>
             </div>
             <div className="w-1/3 mx-4">
