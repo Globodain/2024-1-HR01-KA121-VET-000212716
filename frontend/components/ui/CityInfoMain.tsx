@@ -1,47 +1,56 @@
-import { Sun, Cloud, CloudRain, CloudLightning, CloudFog, Wind, Droplets } from "lucide-react"
+import {
+  Sun,
+  Cloud,
+  CloudRain,
+  CloudLightning,
+  CloudFog,
+  Wind,
+  Droplets,
+} from "lucide-react";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import type { WeatherData } from "@/app/api/city/[cityName]/route"
-import Image from "next/image"
+} from "@/components/ui/select";
+import type { WeatherData } from "@/app/api/city/[cityName]/route";
+import { windDirection } from "@/lib/utils";
+import Image from "next/image";
 
 interface Props {
-  data: WeatherData
-  loading?: boolean
+  data: WeatherData;
+  loading?: boolean;
 }
 
 const getWeatherIcon = (weatherMain: string) => {
   switch (weatherMain.toLowerCase()) {
     case "clear":
-      return <Sun className="w-5 h-5" />
+      return <Sun className="w-5 h-5" />;
     case "clouds":
-      return <Cloud className="w-5 h-5" />
+      return <Cloud className="w-5 h-5" />;
     case "rain":
     case "drizzle":
-      return <CloudRain className="w-5 h-5" />
+      return <CloudRain className="w-5 h-5" />;
     case "thunderstorm":
-      return <CloudLightning className="w-5 h-5" />
+      return <CloudLightning className="w-5 h-5" />;
     case "fog":
     case "mist":
-      return <CloudFog className="w-5 h-5" />
+      return <CloudFog className="w-5 h-5" />;
     default:
-      return <Sun className="w-5 h-5" />
+      return <Sun className="w-5 h-5" />;
   }
-}
+};
 
 const formatTime = (timestamp: number) => {
-  return new Date(timestamp * 1000).toLocaleTimeString('en-US', {
-    hour: 'numeric',
-    hour12: true
+  return new Date(timestamp * 1000).toLocaleTimeString("en-US", {
+    hour: "numeric",
+    hour12: true,
   });
 };
 
 export default function CityInfoMain({ data, loading }: Props) {
-  const shadowClass = loading ? '' : 'shadow-xl';
+  const shadowClass = loading ? "" : "shadow-xl";
 
   return (
     <div className="w-full space-y-4">
@@ -50,13 +59,21 @@ export default function CityInfoMain({ data, loading }: Props) {
           <div className="text-3xl font-bold">
             {Math.round(data.temperature.current)}°C {data.city}
           </div>
-          <div className="text-xl">{data.country}</div>
+          <div className="text-xl">
+            <Image
+              src={`https://flagsapi.com/${data.country}/flat/64.png`}
+              alt={`${data.country} flag`}
+              width={32}
+              height={32}
+            />
+          </div>
           <div className="flex items-center gap-2">
             <span>{data.weather.description}</span>
             {getWeatherIcon(data.weather.main)}
           </div>
           <div className="text-sm">
-            H: {Math.round(data.temperature.max)}° L: {Math.round(data.temperature.min)}°
+            H: {Math.round(data.temperature.max)}° L:{" "}
+            {Math.round(data.temperature.min)}°
           </div>
         </div>
         <Select>
@@ -70,26 +87,32 @@ export default function CityInfoMain({ data, loading }: Props) {
         </Select>
       </div>
 
-
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-white">
-        {['Feels Like', 'Wind Speed', 'Humidity'].map((title) => (
-          <div key={title} className={`bg-[#007cdf] p-4 rounded-2xl ${shadowClass}`}>
-            {title === 'Feels Like' && (
+        {["Feels Like", "Wind Speed", "Humidity"].map((title) => (
+          <div
+            key={title}
+            className={`bg-[#007cdf] p-4 rounded-2xl ${shadowClass}`}
+          >
+            {title === "Feels Like" && (
               <div className="flex items-center justify-between">
                 <span className="text-lg">Feels Like</span>
-                <span className="text-2xl font-bold">{Math.round(data.temperature.feelsLike)}°C</span>
+                <span className="text-2xl font-bold">
+                  {Math.round(data.temperature.feelsLike)}°C
+                </span>
               </div>
             )}
-            {title === 'Wind Speed' && (
+            {title === "Wind Speed" && (
               <div className="flex items-center justify-between">
                 <span className="text-lg flex items-center gap-2">
                   <Wind className="w-5 h-5" />
                   Wind Speed
                 </span>
-                <span className="text-2xl font-bold">{data.wind.speed} m/s</span>
+                <span className="text-2xl font-bold">
+                  {data.wind.speed} m/s
+                </span>
               </div>
             )}
-            {title === 'Humidity' && (
+            {title === "Humidity" && (
               <div className="flex items-center justify-between">
                 <span className="text-lg flex items-center gap-2">
                   <Droplets className="w-5 h-5" />
@@ -112,10 +135,8 @@ export default function CityInfoMain({ data, loading }: Props) {
                        transform hover:-translate-y-1 ${shadowClass}`}
             >
               <div className="text-center">
-                <div className="font-medium">
-                  {formatTime(hour.time)}
-                </div>
-                <img 
+                <div className="font-medium">{formatTime(hour.time)}</div>
+                <Image
                   src={`http://openweathermap.org/img/wn/${hour.weather.icon}@2x.png`}
                   width={20}
                   height={20}
@@ -134,7 +155,9 @@ export default function CityInfoMain({ data, loading }: Props) {
         </div>
       </div>
 
-      <div className={`mt-6 bg-[#007cdf] p-4 rounded-2xl text-white ${shadowClass}`}>
+      <div
+        className={`mt-6 bg-[#007cdf] p-4 rounded-2xl text-white ${shadowClass}`}
+      >
         <h2 className="text-xl font-semibold mb-3">Additional Details</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <div>
@@ -147,11 +170,12 @@ export default function CityInfoMain({ data, loading }: Props) {
           </div>
           <div>
             <div className="text-sm opacity-80">Wind Direction</div>
-            <div className="text-lg font-bold">{data.wind.direction}°</div>
+            <div className="text-lg font-bold">
+              {data.wind.direction}° {windDirection(data.wind.direction)}
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
 }
-
