@@ -2,6 +2,7 @@
 
 import CityInfoMain from "./ui/CityInfoMain";
 import type { WeatherData } from "@/app/api/city/[cityName]/route";
+import Image from "next/image";
 
 interface MainInfoContainerProps {
   data: WeatherData | null;
@@ -11,9 +12,9 @@ interface MainInfoContainerProps {
 const MainInfoContainer = ({ data, loading }: MainInfoContainerProps) => {
   if (!data && !loading) {
     return (
-      <div className="flex-1 p-5 flex items-center justify-center">
-        <p className="text-gray-500 text-lg">
-          Select a city from the sidebar to view weather details
+      <div className="flex-1 p-5 flex items-center justify-center bg-[#add8e6] rounded-3xl m-5 shadow-lg">
+        <p className="text-white text-4xl text-center font-bold ">
+          Select a city from the sidebar to view weather details!
         </p>
       </div>
     );
@@ -22,7 +23,7 @@ const MainInfoContainer = ({ data, loading }: MainInfoContainerProps) => {
   if (loading) {
     return (
       <div className="flex-1 p-5 flex items-center justify-center">
-        <p className="text-gray-500 text-lg">Loading...</p>
+        <Image src="/yellow-loading.svg" alt="Yellow Loading" width={160} height={160}></Image>
       </div>
     );
   }

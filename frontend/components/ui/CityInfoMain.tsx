@@ -53,8 +53,8 @@ export default function CityInfoMain({ data, loading }: Props) {
   const shadowClass = loading ? "" : "shadow-xl";
 
   return (
-    <div className="w-full space-y-4">
-      <div className="flex justify-between items-start">
+    <div className="w-full space-y-4 bg-[#add8e6] p-4 rounded-3xl">
+      <div className="flex justify-between items-start ">
         <div className="bg-[#007cdf] text-white p-4 mb-2 rounded-3xl shadow-xl">
           <div className="text-3xl font-bold">
             {Math.round(data.temperature.current)}°C {data.city}
