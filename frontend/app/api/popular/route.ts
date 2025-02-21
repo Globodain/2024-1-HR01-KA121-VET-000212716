@@ -19,9 +19,6 @@ const POPULAR_CITIES = [
   "Buk-Vlaka",
   "Metković",
   "Komin",
-  "Desne",
-  "Mostar",
-  "Ljubuški",
   "Staševica",
   "Ploče",
 ];
