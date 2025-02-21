@@ -16,7 +16,7 @@ SkyCAST is a fast and lightweight web-based weather forecasting site built with 
 
 ## API Integration
 
-SkyCAST uses CherlekAPI for retrieving weather data. 
+SkyCAST uses OpenWeatherAPI for retrieving weather data. 
 
 ## Legal Information
 
