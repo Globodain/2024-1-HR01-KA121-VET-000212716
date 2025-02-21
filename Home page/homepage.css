@@ -1,0 +1,115 @@
+
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap');
+        
+        :root {
+            --peach-light: #FFCDB2;
+            --peach: #FFB4A2;
+            --rose: #E5989B;
+            --mauve: #B5828C;
+            --gold: #F9CB43;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        .photo{
+            width:700px ;
+            height: 400px;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: #2C3E50;
+            background: linear-gradient(45deg, rgba(206, 124, 79, 0.1) 25%, transparent 25%),
+                        linear-gradient(-45deg, rgba(143, 75, 38, 0.1) 25%, transparent 25%),
+                        linear-gradient(45deg, transparent 75%, rgba(255, 205, 178, 0.1) 75%),
+                        linear-gradient(-45deg, transparent 75%, rgba(255, 205, 178, 0.1) 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .content-box {
+            border-radius: 8px;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: left;
+        }
+
+        .content-box:hover::before {
+            transform: scaleX(1);
+        }
+
+        .content-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid var(--gold);
+            opacity: 0;
+            transition: all 0.3s ease;
+            transform: scale(0.9);
+        }
+
+        .image-wrapper:hover::after {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .image-wrapper img {
+            transition: transform 0.3s ease;
+        }
+
+        .image-wrapper:hover img {
+            transform: scale(1.05);
+        }
+
+        .diagonal-pattern {
+            background-image: linear-gradient(45deg, var(--peach-light) 25%, transparent 25%),
+                            linear-gradient(-45deg, var(--peach-light) 25%, transparent 25%);
+            background-size: 8px 8px;
+            opacity: 0.1;
+        }
