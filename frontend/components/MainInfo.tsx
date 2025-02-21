@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import CityInfoMain from "./ui/CityInfoMain";
 import type { WeatherData } from "../app/api/city/[cityName]/route";
-import Navbar from "./Navbar";
 
 const MainInfoContainer = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);

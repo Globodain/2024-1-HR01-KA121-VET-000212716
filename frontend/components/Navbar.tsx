@@ -4,14 +4,11 @@ import {
   SignInButton,
   SignedIn,
   SignedOut,
-  useUser,
+  UserButton,
 } from "@clerk/nextjs";
 import { Input } from "./ui/input";
-import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 
 const Navbar = () => {
-  const { user, isLoaded } = useUser();
-
   return (
     <div className="flex items-center justify-between p-6 shadow-lg bg-[#007cdf] shadow-2xs mr-5 ml-5 mt-3 rounded-xl h-16">
       <div className="flex items-center gap-4">
