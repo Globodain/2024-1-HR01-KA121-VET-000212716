@@ -4,6 +4,7 @@ import { Card } from "./ui/card";
 import { SunMedium, Cloud, CloudRain } from "lucide-react";
 import Image from "next/image";
 import Search from "./Search";
+import { useTemperature } from "@/context/TemperatureContext";
 
 interface CityWeatherData {
   name: string;
@@ -17,6 +18,9 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ onCityClick }: SidebarProps) => {
+  const { unit, convertTemperature } = useTemperature();
+  const unitSymbol = unit === 'metric' ? '°C' : '°F';
+  
   const [cities, setCities] = useState<CityWeatherData[]>([]);
   const [error, setError] = useState<string | null>(null);
 
@@ -85,7 +89,9 @@ const Sidebar = ({ onCityClick }: SidebarProps) => {
               )}
             </div>
             <div className="flex items-center justify-center pr-1">
-              <p className="text-white text-sm pr-1">{city.temperature}°C</p>
+              <p className="text-white text-sm pr-1">
+                {convertTemperature(city.temperature)}{unitSymbol}
+              </p>
               {getWeatherIcon(city.weather)}
             </div>
           </Card>

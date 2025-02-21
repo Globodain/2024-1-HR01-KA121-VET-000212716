@@ -4,6 +4,7 @@ import {
   ClerkProvider,
 } from "@clerk/nextjs";
 import "./globals.css";
+import { TemperatureProvider } from '@/context/TemperatureContext';
 
 const inter = Inter({
   variable: "--font-inter",
@@ -24,7 +25,11 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${inter.variable} antialiased`}>{children}</body>
+        <body className={`${inter.variable} antialiased`}>
+          <TemperatureProvider>
+            {children}
+          </TemperatureProvider>
+        </body>
       </html>
     </ClerkProvider>
   );

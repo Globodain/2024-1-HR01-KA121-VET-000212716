@@ -17,6 +17,7 @@ import {
 import type { WeatherData } from "@/app/api/city/[cityName]/route";
 import { windDirection } from "@/lib/utils";
 import Image from "next/image";
+import { useTemperature } from "@/context/TemperatureContext";
 
 interface Props {
   data: WeatherData;
@@ -50,6 +51,8 @@ const formatTime = (timestamp: number) => {
 };
 
 export default function CityInfoMain({ data, loading }: Props) {
+  const { unit, convertTemperature } = useTemperature();
+  const unitSymbol = unit === 'metric' ? '°C' : '°F';
   const shadowClass = loading ? "" : "shadow-xl";
 
   return (
@@ -57,7 +60,7 @@ export default function CityInfoMain({ data, loading }: Props) {
       <div className="flex justify-between items-start ">
         <div className="bg-[#007cdf] text-white p-4 mb-2 rounded-3xl shadow-xl">
           <div className="text-3xl font-bold">
-            {Math.round(data.temperature.current)}°C {data.city}
+            {convertTemperature(data.temperature.current)}{unitSymbol} {data.city}
           </div>
           <div className="text-xl">
             <Image
@@ -72,19 +75,11 @@ export default function CityInfoMain({ data, loading }: Props) {
             {getWeatherIcon(data.weather.main)}
           </div>
           <div className="text-sm">
-            H: {Math.round(data.temperature.max)}° L:{" "}
-            {Math.round(data.temperature.min)}°
+            H: {convertTemperature(data.temperature.max)}{unitSymbol} L:{" "}
+            {convertTemperature(data.temperature.min)}{unitSymbol}
           </div>
         </div>
-        <Select>
-          <SelectTrigger className="w-[80px]">
-            <SelectValue placeholder="Unit" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="metric">°C</SelectItem>
-            <SelectItem value="imperial">°F</SelectItem>
-          </SelectContent>
-        </Select>
+
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-white">
@@ -97,7 +92,7 @@ export default function CityInfoMain({ data, loading }: Props) {
               <div className="flex items-center justify-between">
                 <span className="text-lg">Feels Like</span>
                 <span className="text-2xl font-bold">
-                  {Math.round(data.temperature.feelsLike)}°C
+                  {convertTemperature(data.temperature.feelsLike)}{unitSymbol}
                 </span>
               </div>
             )}
@@ -144,7 +139,7 @@ export default function CityInfoMain({ data, loading }: Props) {
                   className="w-12 h-12 mx-auto"
                 />
                 <div className="text-2xl font-bold">
-                  {Math.round(hour.temp)}°
+                  {convertTemperature(hour.temp)}{unitSymbol}
                 </div>
                 <div className="text-xs capitalize">
                   {hour.weather.description}
