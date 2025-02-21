@@ -14,12 +14,6 @@ const Navbar = () => {
       <div className="flex items-center gap-4">
         <h1 className="text-white text-2xl font-semibold">SkyCast</h1>
       </div>
-      <div className="w-1/3 mx-4">
-        <Input
-          placeholder="Search cities..."
-          className="w-full h-10 px-4 text-lg bg-white/90 focus:bg-white transition-colors duration-200"
-        />
-      </div>
 
       <nav className="flex items-center gap-8">
         <Link
