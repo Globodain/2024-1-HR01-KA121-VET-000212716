@@ -1,48 +1,36 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
 import CityInfoMain from "./ui/CityInfoMain";
-import type { WeatherData } from "../app/api/city/[cityName]/route";
+import type { WeatherData } from "@/app/api/city/[cityName]/route";
 
-const MainInfoContainer = () => {
-  const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+interface MainInfoContainerProps {
+  data: WeatherData | null;
+  loading: boolean;
+}
 
-  useEffect(() => {
-    const fetchWeather = async () => {
-      try {
-        const response = await fetch('/api/city/seville');
-        if (!response.ok) throw new Error('Failed to fetch weather data');
-        const data = await response.json();
-        setWeatherData(data);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'An error occurred');
-      } finally {
-        setLoading(false);
-      }
-    };
+const MainInfoContainer = ({ data, loading }: MainInfoContainerProps) => {
+  if (!data && !loading) {
+    return (
+      <div className="flex-1 p-5 flex items-center justify-center">
+        <p className="text-gray-500 text-lg">
+          Select a city from the sidebar to view weather details
+        </p>
+      </div>
+    );
+  }
 
-    fetchWeather();
-  }, []);
+  if (loading) {
+    return (
+      <div className="flex-1 p-5 flex items-center justify-center">
+        <p className="text-gray-500 text-lg">Loading...</p>
+      </div>
+    );
+  }
 
   return (
-    <>
-      <div className={`flex items-center p-6 w-full h-full m-5 rounded-xl ${!loading && 'shadow-lg shadow-2xs bg-[#add8e6]'}`}>
-        {loading ? (
-          <div className="flex items-center justify-center fixed inset-0 z-50">
-            <Image src="/loading.gif" alt="loading svg" width={380} height={380} />
-          </div>
-        ) : error ? (
-          <div>Error: {error}</div>
-        ) : weatherData ? (
-          <CityInfoMain data={weatherData} loading={loading} />
-        ) : (
-          <div>No data available</div>
-        )}
-      </div>
-    </>
+    <div className="flex-1 p-5">
+      <CityInfoMain data={data!} loading={loading} />
+    </div>
   );
 };
 

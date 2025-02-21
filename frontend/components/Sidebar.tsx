@@ -11,8 +11,11 @@ interface CityWeatherData {
   weather: string;
   weatherIcon?: string;
 }
+interface SidebarProps {
+  onCityClick: (cityName: string) => void;
+}
 
-const Sidebar = () => {
+const Sidebar = ({ onCityClick }: SidebarProps) => {
   const [cities, setCities] = useState<CityWeatherData[]>([]);
   const [error, setError] = useState<string | null>(null);
 
@@ -52,14 +55,13 @@ const Sidebar = () => {
     );
 
   return (
-    <div
-      className={`flex flex-wrap items-center justify-center pt-3 pb-3 pl-2 pr-2 w-1/3 mt-5 mb-5 ml-5 mr-2 rounded-xl h-auto ${
-        cities.length > 0 ? "bg-[#add8e6] shadow-lg shadow-2xs" : ""
-      } space-y-1`}
-    >
+    <div className={`flex flex-wrap items-center justify-center pt-3 pb-3 pl-2 pr-2 w-1/3 mt-5 mb-5 ml-5 mr-2 rounded-xl h-auto ${
+      cities.length > 0 ? "bg-[#add8e6] shadow-lg shadow-2xs" : ""
+    } space-y-1`}>
       {cities?.map((city, index) => (
         <Card
           key={index}
+          onClick={() => onCityClick(city.name)}
           className={`flex justify-between p-1.5 bg-[#007cdf] border-none w-full h-auto rounded-2xl hover:bg-[#0066b3] transition-colors duration-200 cursor-pointer ${
             cities.length > 0 ? "shadow-lg" : ""
           }`}
