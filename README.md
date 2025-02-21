@@ -7,7 +7,7 @@ SkyCAST is a fast and lightweight web-based weather forecasting site built with 
 ### Weather Forecast
 - 24-hour and 7-day accurate weather forecasts
 - High precision with 98.2% accuracy rate
-- Real-world weather information retrieved through CherlekAPI
+- Real-world weather information retrieved through OpenWeatherAPI
 
 ## Technology Stack
 
