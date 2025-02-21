@@ -10,13 +10,17 @@ interface CityWeatherData {
 
 // TODO - add user favorites cities fetch from db if user is logged in 
 const POPULAR_CITIES = [
+  "Seville",
   "Lovorje",
+  "Pančevo",
+  "Bijelo Polje",
+  "Split",
+  "Opuzen",
   "Buk-Vlaka",
   "Metković",
   "Komin",
   "Desne",
   "Mostar",
-  "Čapljina",
   "Ljubuški",
   "Staševica",
   "Ploče",

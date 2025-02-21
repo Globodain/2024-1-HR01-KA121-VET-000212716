@@ -55,13 +55,10 @@ const Sidebar = ({ onCityClick }: SidebarProps) => {
       </div>
     );
 
-    return (
-      <div className={`flex flex-wrap items-center justify-center pt-3 pb-3 pl-2 pr-2 w-1/3 mt-5 mb-5 ml-5 mr-2 rounded-xl h-auto ${
-        cities.length > 0 ? "bg-[#add8e6] shadow-lg shadow-2xs" : ""
-      } space-y-1`}>
-        <div className="w-full mb-4">
-          <Search onCitySelect={onCityClick} />
-        </div>
+  return (
+    <div className={`flex flex-wrap items-center justify-center pt-3 pb-3 pl-2 pr-2 w-1/3 mt-5 mb-5 ml-5 mr-2 rounded-xl h-auto ${
+      cities.length > 0 ? "bg-[#add8e6] shadow-lg shadow-2xs" : ""
+    } space-y-1`}>
       {cities?.map((city, index) => (
         <Card
           key={index}
