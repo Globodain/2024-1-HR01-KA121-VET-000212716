@@ -37,30 +37,13 @@ const Navbar = () => {
         >
           Help
         </Link>
-        <SignedOut>
-          <SignInButton mode="modal">
-            <button className="rounded-lg bg-white px-4 py-2 text-sm font-medium text-blue-600 hover:bg-gray-100 transition-colors duration-200">
-              Sign In
-            </button>
-          </SignInButton>
-        </SignedOut>
+        <div className="text-white">
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+        </div>
         <SignedIn>
-          <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-            <Avatar className="h-8 w-8 rounded-lg">
-              <AvatarImage src={user?.imageUrl} alt={user?.firstName || 'User'} />
-              <AvatarFallback className="rounded-lg">
-                {user?.firstName?.charAt(0) || 'U'}
-              </AvatarFallback>
-            </Avatar>
-            {isLoaded && user && (
-              <div className="grid flex-1 text-left text-sm leading-tight text-white">
-                <span className="truncate font-semibold">{user.firstName}</span>
-                <span className="truncate text-xs text-white/80">
-                  {user.primaryEmailAddress?.toString()}
-                </span>
-              </div>
-            )}
-          </div>
+          <UserButton />
         </SignedIn>
       </nav>
     </div>

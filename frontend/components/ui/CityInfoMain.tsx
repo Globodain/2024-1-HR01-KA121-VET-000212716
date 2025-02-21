@@ -11,6 +11,7 @@ import Image from "next/image"
 
 interface Props {
   data: WeatherData
+  loading?: boolean
 }
 
 const getWeatherIcon = (weatherMain: string) => {
@@ -39,7 +40,9 @@ const formatTime = (timestamp: number) => {
   });
 };
 
-export default function CityInfoMain({ data }: Props) {
+export default function CityInfoMain({ data, loading }: Props) {
+  const shadowClass = loading ? '' : 'shadow-xl';
+
   return (
     <div className="w-full space-y-4">
       <div className="flex justify-between items-start">
@@ -47,14 +50,7 @@ export default function CityInfoMain({ data }: Props) {
           <div className="text-3xl font-bold">
             {Math.round(data.temperature.current)}°C {data.city}
           </div>
-          <div className="text-xl">
-            <Image 
-              src={`https://flagsapi.com/${data.country}/flat/64.png`}
-              alt={`${data.country} flag`}
-              width={32}
-              height={32}
-            />
-          </div>
+          <div className="text-xl">{data.country}</div>
           <div className="flex items-center gap-2">
             <span>{data.weather.description}</span>
             {getWeatherIcon(data.weather.main)}
@@ -63,7 +59,7 @@ export default function CityInfoMain({ data }: Props) {
             H: {Math.round(data.temperature.max)}° L: {Math.round(data.temperature.min)}°
           </div>
         </div>
-        <Select defaultValue="metric">
+        <Select>
           <SelectTrigger className="w-[80px]">
             <SelectValue placeholder="Unit" />
           </SelectTrigger>
@@ -74,48 +70,52 @@ export default function CityInfoMain({ data }: Props) {
         </Select>
       </div>
 
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-white">
-        <div className="bg-[#007cdf] p-4 rounded-2xl shadow-lg">
-          <div className="flex items-center justify-between">
-            <span className="text-lg">Feels Like</span>
-            <span className="text-2xl font-bold">{Math.round(data.temperature.feelsLike)}°C</span>
+        {['Feels Like', 'Wind Speed', 'Humidity'].map((title) => (
+          <div key={title} className={`bg-[#007cdf] p-4 rounded-2xl ${shadowClass}`}>
+            {title === 'Feels Like' && (
+              <div className="flex items-center justify-between">
+                <span className="text-lg">Feels Like</span>
+                <span className="text-2xl font-bold">{Math.round(data.temperature.feelsLike)}°C</span>
+              </div>
+            )}
+            {title === 'Wind Speed' && (
+              <div className="flex items-center justify-between">
+                <span className="text-lg flex items-center gap-2">
+                  <Wind className="w-5 h-5" />
+                  Wind Speed
+                </span>
+                <span className="text-2xl font-bold">{data.wind.speed} m/s</span>
+              </div>
+            )}
+            {title === 'Humidity' && (
+              <div className="flex items-center justify-between">
+                <span className="text-lg flex items-center gap-2">
+                  <Droplets className="w-5 h-5" />
+                  Humidity
+                </span>
+                <span className="text-2xl font-bold">{data.humidity}%</span>
+              </div>
+            )}
           </div>
-        </div>
-        <div className="bg-[#007cdf] p-4 rounded-2xl shadow-lg">
-          <div className="flex items-center justify-between">
-            <span className="text-lg flex items-center gap-2">
-              <Wind className="w-5 h-5" />
-              Wind Speed
-            </span>
-            <span className="text-2xl font-bold">{data.wind.speed} m/s</span>
-          </div>
-        </div>
-        <div className="bg-[#007cdf] p-4 rounded-2xl shadow-lg">
-          <div className="flex items-center justify-between">
-            <span className="text-lg flex items-center gap-2">
-              <Droplets className="w-5 h-5" />
-              Humidity
-            </span>
-            <span className="text-2xl font-bold">{data.humidity}%</span>
-          </div>
-        </div>
+        ))}
       </div>
 
-      <div className="mt-6">
-        <h2 className="text-xl font-semibold mb-4 text-white">Today&apos;s Forecast</h2>
+      <div className="mt-6 bg-white p-4 rounded-2xl">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2 overflow-x-auto">
           {data.hourlyForecast.map((hour) => (
             <div
               key={hour.time}
-              className="bg-[#007cdf] text-white p-3 rounded-xl shadow-lg 
+              className={`bg-[#007cdf] text-white p-3 rounded-xl 
                        hover:shadow-xl transition-all duration-200 
-                       transform hover:-translate-y-1"
+                       transform hover:-translate-y-1 ${shadowClass}`}
             >
               <div className="text-center">
                 <div className="font-medium">
                   {formatTime(hour.time)}
                 </div>
-                <Image 
+                <img 
                   src={`http://openweathermap.org/img/wn/${hour.weather.icon}@2x.png`}
                   width={20}
                   height={20}
@@ -134,7 +134,7 @@ export default function CityInfoMain({ data }: Props) {
         </div>
       </div>
 
-      <div className="mt-6 bg-[#007cdf] p-4 rounded-2xl shadow-lg text-white">
+      <div className={`mt-6 bg-[#007cdf] p-4 rounded-2xl text-white ${shadowClass}`}>
         <h2 className="text-xl font-semibold mb-3">Additional Details</h2>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <div>
@@ -152,6 +152,6 @@ export default function CityInfoMain({ data }: Props) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 

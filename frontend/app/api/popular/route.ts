@@ -19,7 +19,7 @@ const POPULAR_CITIES = [
   "Čapljina",
   "Ljubuški",
   "Staševica",
-  "Mihalj",
+  "Ploče",
 ];
 
 const OPENWEATHER_API_KEY = process.env.OPENWEATHER_API_KEY;
