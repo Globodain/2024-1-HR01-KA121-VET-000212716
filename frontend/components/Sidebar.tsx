@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Card } from "./ui/card";
 import { SunMedium, Cloud, CloudRain } from 'lucide-react';
+import Image from 'next/image';
 
 interface CityWeatherData {
   name: string;
@@ -68,7 +69,12 @@ const Sidebar = () => {
           <div className="flex items-center gap-2">
             <h1 className="text-white text-lg font-extralight pl-1">{city.name}</h1>
             {city.country && (
-              <span className="text-white/70 text-sm">{city.country}</span>
+                       <Image 
+                            src={`https://flagsapi.com/${city.country}/flat/64.png`}
+                            alt={`${city.country} flag`}
+                            width={16}
+                            height={16}
+                          />
             )}
           </div>
           <div className="flex items-center justify-center pr-1">

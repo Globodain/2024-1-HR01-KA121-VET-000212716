@@ -10,16 +10,16 @@ interface CityWeatherData {
 
 // TODO - add user favorites cities fetch from db if user is logged in 
 const POPULAR_CITIES = [
-  "Toronto",
-  "New York",
-  "London",
-  "Los Angeles",
-  "Vancouver",
-  "Miami",
-  "Seattle",
-  "Chicago",
+  "Lovorje",
+  "Buk-Vlaka",
+  "Metković",
+  "Komin",
+  "Desne",
+  "Mostar",
+  "Čapljina",
+  "Ljubuški",
   "Staševica",
-  "Ploče",
+  "Mihalj",
 ];
 
 const OPENWEATHER_API_KEY = process.env.OPENWEATHER_API_KEY;

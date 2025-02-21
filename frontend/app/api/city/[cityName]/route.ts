@@ -45,7 +45,7 @@ export async function GET(
   { params }: { params: { cityName: string } }
 ) {
   try {
-    const cityName = params.cityName;
+    const cityName = await params.cityName;
     const { searchParams } = new URL(request.url);
     const requestedUnits = searchParams.get("units") || "metric";
     const units = unitsAllowed.includes(requestedUnits) ? requestedUnits : "metric";

@@ -7,6 +7,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import type { WeatherData } from "@/app/api/city/[cityName]/route"
+import Image from "next/image"
 
 interface Props {
   data: WeatherData
@@ -46,7 +47,14 @@ export default function CityInfoMain({ data }: Props) {
           <div className="text-3xl font-bold">
             {Math.round(data.temperature.current)}°C {data.city}
           </div>
-          <div className="text-xl">{data.country}</div>
+          <div className="text-xl">
+            <Image 
+              src={`https://flagsapi.com/${data.country}/flat/64.png`}
+              alt={`${data.country} flag`}
+              width={32}
+              height={32}
+            />
+          </div>
           <div className="flex items-center gap-2">
             <span>{data.weather.description}</span>
             {getWeatherIcon(data.weather.main)}
@@ -55,13 +63,13 @@ export default function CityInfoMain({ data }: Props) {
             H: {Math.round(data.temperature.max)}° L: {Math.round(data.temperature.min)}°
           </div>
         </div>
-        <Select>
+        <Select defaultValue="metric">
           <SelectTrigger className="w-[80px]">
             <SelectValue placeholder="Unit" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="celsius">°C</SelectItem>
-            <SelectItem value="fahrenheit">°F</SelectItem>
+            <SelectItem value="metric">°C</SelectItem>
+            <SelectItem value="imperial">°F</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -107,8 +115,10 @@ export default function CityInfoMain({ data }: Props) {
                 <div className="font-medium">
                   {formatTime(hour.time)}
                 </div>
-                <img 
+                <Image 
                   src={`http://openweathermap.org/img/wn/${hour.weather.icon}@2x.png`}
+                  width={20}
+                  height={20}
                   alt={hour.weather.description}
                   className="w-12 h-12 mx-auto"
                 />
