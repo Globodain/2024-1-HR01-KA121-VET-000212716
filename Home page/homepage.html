@@ -1,0 +1,399 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Seville - A Journey Through Andalusia's Heart</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/16.1.3/smooth-scroll.min.js"></script>
+    <link rel="stylesheet" href="homepage.css">
+    
+</head>
+<body>
+    <!-- Header -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#home" class="text-2xl font-bold" style="color: var(--mauve)">
+                    Seville Blog
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#welcome" class="hover:text-rose-400 transition-colors">Welcome</a>
+                    <a href="#streets" class="hover:text-rose-400 transition-colors">Streets</a>
+                    <a href="#culture" class="hover:text-rose-400 transition-colors">Culture</a>
+                    <a href="#journey" class="hover:text-rose-400 transition-colors">Journey</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen">
+        <img src="sevilla.jpg" alt="Seville Panorama" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+            <div class="text-center">
+                <h1 class="text-7xl font-bold text-white mb-4">Seville</h1>
+                <div class="h-1 w-32 mx-auto" style="background-color: var(--gold)"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section id="welcome" class="section py-20">
+        <div class="container mx-auto px-6">
+            <div class="content-box" style="background-color: var(--peach-light)">
+                <h2 class="text-4xl font-bold mb-6">Welcome to the Heart of Seville</h2>
+                <p class="text-lg">Step into the rhythm of Seville — a city where every corner tells a story, bursting with colors and life. This blog is your guide to discovering where tradition meets modern spirit, and history blends with the present.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Streets Section -->
+    <section id="streets" class="section py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="image-wrapper">
+                    <img src="ulica10.jpg" alt="Seville Street" class="w-full h-full object-cover">
+                </div>
+                <div class="content-box" style="background-color: var(--peach)">
+                    <h2 class="text-4xl font-bold mb-6">Where the Sun Dances on Stone Streets</h2>
+                    <p class="text-lg">Seville is more than a city — it's a feeling. Imagine strolling through narrow, winding streets where orange blossoms adorn the trees, and historic buildings gleam in the sun. The scent of jasmine fills the air, while the sounds of flamenco echo from hidden courtyards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Culture Section -->
+    <section id="culture" class="section py-20">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="content-box" style="background-color: var(--rose)">
+                    <h2 class="text-4xl font-bold mb-6 text-white">A Canvas of Culture, Flavor, and Rhythm</h2>
+                    <p class="text-lg text-white">Seville is a living work of art — a fusion of rich culture, irresistible flavors, and soul-stirring music. From flamenco that stirs emotions to tapas that delight the palate, this city knows how to celebrate life.</p>
+                    <ul class="mt-6 space-y-2 text-white">
+                        <li>• Iconic places that define Seville's skyline</li>
+                        <li>• Local tips on experiencing the city like a true Sevillano</li>
+                        <li>• Hidden spots where the past still whispers stories</li>
+                    </ul>
+                </div>
+                <div class="image-wrapper">
+                    <img src="ronda.jpg" alt="Flamenco Dancer" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Section -->
+    <section id="journey" class="section py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="image-wrapper">
+                    <img src="grad.jpg" alt="Sunset over Giralda" class="w-full h-full object-cover">
+                </div>
+                <div class="content-box" style="background-color: var(--mauve)">
+                    <h2 class="text-4xl font-bold mb-6 text-white">The Journey Begins... Story by Story</h2>
+                    <p class="text-lg text-white">This is not just a blog. It's a collection of moments, memories, and discoveries. With each new post, we'll take you deeper into the heart of Seville. Expect stories of history, vibrant culture, and must-see places.</p>
+                    <p class="text-lg mt-6 text-white">Are you ready to explore Seville with us? Let's uncover the secrets of this magical city — street by street, sunset by sunset, story by story.</p>
+            
+                    <section id="footer" class="py-20">
+                        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <!-- Crni stupac -->
+                            <div class="bg-black text-white p-6 rounded-lg shadow-lg">
+                                <h3 class="text-2xl font-bold mb-4">Did You Know?</h3>
+                                <p>Seville is home to the largest Gothic cathedral in the world — the Seville Cathedral — and it’s also where Christopher Columbus is buried.</p>
+                                <hr class="my-4 border-gray-600">
+                                <p>Explore the hidden corners of Seville and experience the soul of Andalusia.</p>
+                            </div>
+                    
+                            <!-- Prazni prostor ili slike -->
+                            <div class="md:col-span-2">
+                                <img src="grad.jpg" alt="Seville Night View" class="w-full h-auto rounded-lg">
+                            </div>
+                        </div>
+                    </section>
+                    
+                    
+            
+                </div>
+            </div>
+        </div>
+
+
+
+        <section id="footer" class="py-20">
+            <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Crni stupac -->
+                <div class="bg-black text-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4">Did You Know?</h3>
+                    <p>Seville is home to the largest Gothic cathedral in the world — the Seville Cathedral — and it’s also where Christopher Columbus is buried.</p>
+                    <hr class="my-4 border-gray-600">
+                    <p>Explore the hidden corners of Seville and experience the soul of Andalusia.</p>
+                </div>
+        
+                <!-- Prazni prostor ili slike -->
+                <div class="md:col-span-2">
+                    <img src="sevilla2.jpg" alt="Seville Night View" class="w-full h-auto rounded-lg">
+                </div>
+            </div>
+        </section>
+        
+        
+    </section>
+
+    <script>
+        // Scroll animation
+        const sections = document.querySelectorAll('.section');
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Initialize smooth scroll
+        new SmoothScroll('a[href*="#"]', {
+            speed: 800,
+            speedAsDuration: true
+        });
+    </script>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Seville - A Journey Through Andalusia's Heart</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/16.1.3/smooth-scroll.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@400;600&display=swap');
+        
+        :root {
+            --peach-light: #FFCDB2;
+            --peach: #FFB4A2;
+            --rose: #E5989B;
+            --mauve: #B5828C;
+            --gold: #F9CB43;
+            --dark-orange: #D35400;
+            --dark-orange-hover: #E67E22;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: #2C3E50;
+            background-color: white;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Geometric background pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                linear-gradient(45deg, rgba(211, 84, 0, 0.03) 25%, transparent 25%) 0 0,
+                linear-gradient(-45deg, rgba(211, 84, 0, 0.03) 25%, transparent 25%) 0 0,
+                linear-gradient(45deg, transparent 75%, rgba(211, 84, 0, 0.03) 75%) 0 0,
+                linear-gradient(-45deg, transparent 75%, rgba(211, 84, 0, 0.03) 75%) 0 0;
+            background-size: 20px 20px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Enhanced Section Animations */
+        .section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Content Box Enhancements */
+        .content-box {
+            background-color: var(--dark-orange) !important;
+            border-radius: 12px;
+            padding: 2.5rem;
+            color: white;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(211, 84, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1));
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .content-box:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(211, 84, 0, 0.3);
+        }
+
+        .content-box:hover::before {
+            transform: translateX(100%);
+        }
+
+        /* Image Wrapper Enhancements */
+        .image-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .image-wrapper::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 3px solid var(--dark-orange);
+            border-radius: 12px;
+            opacity: 0;
+            transform: scale(1.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .image-wrapper:hover {
+            transform: rotate(1deg) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .image-wrapper:hover::after {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .image-wrapper img {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .image-wrapper:hover img {
+            transform: scale(1.1) rotate(-1deg);
+        }
+
+        /* Navigation Enhancements */
+        .nav-link {
+            position: relative;
+            color: var(--dark-orange);
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--dark-orange);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: right;
+        }
+
+        .nav-link:hover {
+            color: var(--dark-orange-hover);
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Footer Enhancements */
+        .footer-box {
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+            border-radius: 12px;
+            transition: all 0.4s ease;
+        }
+
+        .footer-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Rest of your HTML remains the same, but with these class modifications: -->
+    <!-- 1. Add class="nav-link" to all navigation links -->
+    <!-- 2. Replace bg-black with class="footer-box" in footer sections -->
+    <!-- Your existing HTML structure stays intact -->
+    
+    <script>
+        // Enhanced scroll animation
+        const sections = document.querySelectorAll('.section');
+        
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Initialize smooth scroll with enhanced options
+        new SmoothScroll('a[href*="#"]', {
+            speed: 800,
+            speedAsDuration: true,
+            easing: 'easeInOutCubic'
+        });
+    </script>
+</body>
+</html>
+Last edited just now
+
+
+
+
