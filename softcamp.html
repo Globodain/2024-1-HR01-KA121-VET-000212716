@@ -26,27 +26,8 @@
       gtag('js', new Date());
 
       gtag('config', 'G-LCGJWRVV5Y');
-
-      document.addEventListener("DOMContentLoaded", function () {
-            document.querySelectorAll(".faq-question").forEach(question => {
-                question.addEventListener("click", function () {
-                    const answer = this.nextElementSibling;
-                    const icon = this.querySelector("i");
-                    
-                    // Toggle visibility
-                    answer.classList.toggle("active");
-                    
-                    // Change icon direction
-                    icon.classList.toggle("fa-chevron-down");
-                    icon.classList.toggle("fa-chevron-up");
-                });
-            });
-        });
-     
     </script>
-    <!-- End Google Tag Manager -->
-
-    <!--Core CSS -->
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/app.css" />
@@ -58,6 +39,7 @@
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         color: #333;
         line-height: 1.6;
+        padding-top: 3.25rem;
       }
       
       h1, h2, h3, h4, h5, h6 {
@@ -88,7 +70,7 @@
       .title.is-2 {
         font-size: 2.25rem;
         margin-bottom: 1.25rem;
-        color:black ;
+        color: white;
       }
       
       .subtitle.is-4 {
@@ -96,7 +78,7 @@
         font-weight: 400;
         opacity: 0.9;
         margin-bottom: 2rem;
-        color: black;
+        color: white;
       }
 
       .subtitle.is-46{
@@ -373,6 +355,9 @@
       /* Features Grid */
       .features-grid {
         background-color: white;
+        display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Ensures equal width */
+  gap: 20px;
       }
       
       .feature-item {
@@ -380,6 +365,10 @@
         text-align: center;
         transition: all 0.3s ease;
         border: 1px solid #f0f0f0;
+        display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
       }
       
       .feature-item:hover {
@@ -488,42 +477,118 @@
       
       
       /* Footer */
-      .footer {
-        background-color: #222;
-        color: #999;
-        padding: 4rem 0 2rem;
-      }
-      
-      .footer-logo {
-        max-height: 40px;
-        margin-bottom: 1rem;
-      }
-      
-      .footer-links h4 {
-        color: white;
-        margin-bottom: 1.5rem;
-        font-size: 1.1rem;
-      }
-      
-      .footer-links ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-      
-      .footer-links li {
-        margin-bottom: 0.75rem;
-      }
-      
-      .footer-links a {
-        color: #999;
-        transition: all 0.3s ease;
-      }
-      
-      .footer-links a:hover {
-        color: white;
-        text-decoration: none;
-      }
+      .footer-light-medium {
+    background-color: #f8f9fa;
+    padding: 4rem 0 2rem;
+    color: #4a4a4a;
+  }
+  
+  .footer-cta {
+    background-color: #1a29f9;
+    color: white;
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 30px rgba(26, 41, 249, 0.15);
+  }
+  
+  .cta-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: white;
+  }
+  
+  .cta-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+  }
+  
+  .footer-divider {
+    height: 1px;
+    background: rgba(0,0,0,0.08);
+    margin-bottom: 3rem;
+  }
+  
+  .footer-logo {
+    max-height: 40px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .brand-description {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+  }
+  
+  .footer-header {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+  
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-links li {
+    margin-bottom: 0.75rem;
+  }
+  
+  .footer-links a {
+    color: #666;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+  }
+  
+  .footer-links a:hover {
+    color: #1a29f9;
+    text-decoration: none;
+  }
+  
+  .social-links {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .social-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: rgba(26, 41, 249, 0.1);
+    color: #1a29f9;
+    transition: all 0.3s ease;
+  }
+  
+  .social-button:hover {
+    background-color: #1a29f9;
+    color: white;
+    transform: translateY(-3px);
+  }
+  
+  .footer-copyright {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    font-size: 0.9rem;
+    color: #888;
+  }
+  
+  .footer-copyright a {
+    color: #1a29f9;
+    transition: all 0.3s ease;
+  }
+  
+  .footer-copyright a:hover {
+    text-decoration: underline;
+  }
       
       .copyright {
         margin-top: 3rem;
@@ -538,6 +603,15 @@
         .title.is-1 {
           font-size: 2rem;
         }
+        
+        .navbar.is-fixed-top {
+        z-index: 30; 
+         }
+  
+        .section:first-of-type, 
+        .hero:first-of-type .hero-body {
+        padding-top: 5rem;
+         }
         
         .title.is-2 {
           font-size: 1.75rem;
@@ -572,38 +646,6 @@
           max-height: 40px;
         }
       }
-
-      .faq-section {
-            max-width: 900px;
-            margin: auto;
-        }
-        .faq-title {
-            margin-bottom: 30px;
-        }
-        .faq-item {
-            border-bottom: 1px solid #ddd;
-            padding: 10px 0;
-        }
-        .faq-question {
-            font-weight: bold;
-            cursor: pointer;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #f0f0f0;
-            border-radius: 5px;
-        }
-        .faq-answer {
-            display: none;
-            padding: 15px;
-            background: #fff;
-            border-left: 4px solid #3273dc;
-            margin-top: 5px;
-        }
-        .faq-answer.active {
-            display: block;
-        }
     </style>
   </head>
 
@@ -887,165 +929,13 @@
         </div>
         
         <!-- Step 1 -->
-          <div id="how-to-implement-it" class="section">
-            <div class="container">
-              <!-- Feature -->
-              <div class="columns is-vcentered pb-20">
-                <div class="column is-7 has-text-centered">
-                  <img
-                    class=""
-                    src="https://cdn-static.globodain.com/softcamp/website/landing/2025/feb/sec-1.svg"
-                    alt="Section 1 Image"
-                  />
-                </div>
-                <div class="column is-5">
-                  <h2
-                    class="title feature-title dark-text no-margin is-centered-tablet-portrait"
-                  >
-                    Crea tu cuenta y configúrala
-                  </h2>
-                  <p class="pt-3 section-feature-description is-centered-tablet-portrait">
-                    Se creará simultáneamente la cuenta de usuario y negocio, siendo la primera ligada a ésta última.<br><br>
-                    Puedes configurar la cuenta para <b>adaptar la gestión a tu forma de dirigir el negocio</b>: temporadas, alojamientos, fechas de cierre, operativa, definición de servicios y características...<br><br>
-                    Una vez activada la cuenta podrás importar los datos de tu anterior negocio haciendo uso de la herramienta que ofrecemos para adaptarlo.
-                  </p>
-                </div>
-              </div>
-
-          <div class="columns is-vcentered pt-20 pb-20">
-            <div
-              class="column is-7 has-text-centered is-hidden-desktop is-hidden-tablet"
-            >
-              <img
-                class=""
-                src="https://cdn-static.globodain.com/softcamp/website/landing/2025/feb/sec-2.svg"
-                alt="Section 2 Image"
-              />
-            </div>
-            <div class="column is-5">
-              <h2
-                class="title feature-title dark-text no-margin is-centered-tablet-portrait"
-              >
-                Define tus roles de usuario
-              </h2>
-              <p class="pt-3 section-feature-description is-centered-tablet-portrait">
-                Crea un usuario por cada compañero de trabajo. Esto permitirá <b>identificar las tareas y acciones realizadas por cada trabajador</b> o asociar dinero a la caja de recepción (crea el rol de recepcionista y asócialo a un usuario).<br><br>
-                La creación de roles es una buena decisión si quieres <b>limitar las capacidades de cada usuario</b> - cómo la visibilidad a contenido financiero - y optimizar el trabajo en equipo. Limitarás también el rango de acción de dicho usuario, reduciendo de ésta forma la probabilidad de cometer errores.
-              </p>
-            </div>
-            <div class="column is-7 has-text-centered is-hidden-mobile">
-              <img
-                class=""
-                src="https://cdn-static.globodain.com/softcamp/website/landing/2025/feb/sec-2.svg"
-                alt="Section 2 Image" />
+        <div class="columns is-vcentered mb-6">
+          <div class="column is-6-desktop order-2-mobile">
+            <div class="step-content">
+              <span class="step-number">1</span>
+              <h3 class="title is-3">Crea tu cuenta y configúrala</h3>
+              <p>Se creará simultáneamente la cuenta de usuario y negocio, siendo la primera ligada a ésta última.</p>
+              <p>Puedes configurar la cuenta para <strong>adaptar la gestión a tu forma de dirigir el negocio</strong>: temporadas, alojamientos, fechas de cierre, operativa, definición de servicios y características.</p>
+              <p>Una vez activada la cuenta podrás importar los datos de tu anterior negocio haciendo uso de la herramienta que ofrecemos para adaptarlo.</p>
             </div>
           </div>
-
-          <div class="columns is-vcentered pt-20">
-            <div class="column is-7 has-text-centered">
-              <img
-                class=""
-                src="https://cdn-static.globodain.com/softcamp/website/landing/2025/feb/sec-3.svg"
-                alt="Section 3 Image"
-              />
-            </div>
-            <div class="column is-5">
-              <h2
-                class="title feature-title dark-text no-margin is-centered-tablet-portrait"
-              >
-                Comienza a gestionar tus reservas
-              </h2>
-              <p class="pt-3 section-feature-description is-centered-tablet-portrait">
-                Una vez configurado todo el panel del negocio y dado de alta los alojamientos, podrás comenzar a operar.<br><br>
-                Para obtener una experiencia totalmente completa, <b>te recomendamos activar OneWay e instalar las integraciones necesarias</b> para aumentar tus ventas en un +200% y desplegar todos tus alojamientos en los canales de venta.<br><br>
-                Tienes a tu diposición un marketplace con <b>una amplia gama de módulos que permitirán aumentar u optimizar las funcionalidades de la plataforma</b>. Algunos de éstos módulos básicos son: Interactive Map, Cleanapp (housekeeping) o Recovermind.
-              </p>
-            </div>
-          </div>
-
-          <div class="cta-block no-border pt-30">
-            <div class="head-text">
-              <h3 class="title is-3">¿Quieres ver más?</h3>
-              <p class="subtitle is-5">Solicita acceso a una demo personalizada</p>
-            </div>
-            <div class="head-action">
-              <div class="buttons is-centered mt-5">
-                <a href="https://globodain.com/es-es/softcamp/demo" class="button primary-btn is-rounded raised action-button"
-                  >Solicitar demo</a>
-                <a href="mailto:office@globodain.com?subject=Pregunta%20sobre%20SoftCamp" 
-                class="button chat-button is-primary">Hablar con soporte</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="section section-focus">
-            <div class="container ">
-              <!-- Clients -->
-              <div class="hero-foot pb-40">
-                <div class="container">
-                  <div class="tabs partner-tabs is-centered">
-                    <ul style="display: flex; flex-wrap: wrap; gap: 10px; list-style: none; padding: 0;">
-                      <li>
-                        <a><img class="partner-logo" src="https://cdn-static.globodain.com/softcamp/website/collaborations/agoda" alt="Agoda" style="max-height: 50px; width: auto;" /></a>
-                      </li>
-                      <li>
-                        <a><img class="partner-logo" src="https://cdn-static.globodain.com/softcamp/website/collaborations/airbnb" alt="Airbnb" style="max-height: 50px; width: auto;" /></a>
-                      </li>
-                      <li>
-                        <a><img class="partner-logo" src="https://cdn-static.globodain.com/softcamp/website/collaborations/atrapalo" alt="Atrapalo" style="max-height: 50px; width: auto;" /></a>
-                      </li>
-                      <li>
-                        <a><img class="partner-logo" src="https://cdn-static.globodain.com/softcamp/website/collaborations/hotels" alt="Hotels" style="max-height: 50px; width: auto;" /></a>
-                      </li>
-                      <li>
-                        <a><img class="partner-logo" src="https://cdn-static.globodain.com/softcamp/website/collaborations/booking" alt="Booking" style="max-height: 50px; width: auto;" /></a>
-                      </li>
-                      <li>
-                        <a><img class="partner-logo" src="https://cdn-static.globodain.com/softcamp/website/collaborations/travelperk" alt="Travelperk" style="max-height: 50px; width: auto;" /></a>
-                      </li>
-                      <li>
-                        <a><img class="partner-logo" src="https://cdn-static.globodain.com/softcamp/website/collaborations/viajes-el-corte-ingles" alt="Viajes El Corte Inglés" style="max-height: 50px; width: auto;" /></a>
-                      </li>
-                      <li>
-                        <a><img class="partner-logo" src="https://cdn-static.globodain.com/softcamp/website/collaborations/pitchup" alt="Pitchup" style="max-height: 50px; width: auto;" /></a>
-                      </li>
-                      <li>
-                        <a><img class="partner-logo" src="https://cdn-static.globodain.com/softcamp/website/collaborations/luxury-escapes" alt="Luxury Escapes" style="max-height: 50px; width: auto;" /></a>
-                      </li>
-                    </ul>
-                    
-                  </div>
-                </div>
-              </div>
-
-          <section class="section">
-            <div class="container faq-section">
-                <h2 class="title has-text-centered faq-title">Te resolvemos todas tus dudas</h2>
-                
-                <div class="faq-item">
-                    <div class="faq-question">¿Puedo probar el software de gestión? <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer">Puedes solicitar la <strong>creación de una cuenta demo</strong>. Conlleva el mismo proceso que el registro de una cuenta normal, pero con datos de ejemplo. <strong>La cuenta demo será editable, pero no usable</strong>. Contacta con el equipo de soporte para pasar de 'Demo' a 'Live'.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">¿Qué coste tiene usar el software? <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer"><strong>El uso de SoftCamp es gratuito</strong> por tiempo ilimitado. La contratación de servicios de terceros o costes de transacción serán abonados por el negocio.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">¿Cuál es la ventaja de SoftCamp sobre otros software de gestión? <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer">SoftCamp es un software <strong>especializado en la gestión de Campings</strong>, con tecnología avanzada que simplifica la administración y reduce el tiempo de aprendizaje.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">¿Qué ocurre con mis datos? <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer">Tus datos son <strong>accesibles solo por el administrador</strong>. Puedes exportarlos en Excel o JSON, o solicitar acceso a la API de SoftCamp. El equipo de soporte solo tiene acceso a datos operativos esenciales.</div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">¿Cuándo puedo empezar a utilizar la solución? <i class="fas fa-chevron-down"></i></div>
-                    <div class="faq-answer">Tu cuenta es revisada por nuestro equipo de soporte para verificar que cumple con las normativas legales. <b>El tiempo medio de activación es de 12 horas</b>, dependiendo de la documentación recibida.</div>
-                </div>
-            </div>
-        </section>
-    
