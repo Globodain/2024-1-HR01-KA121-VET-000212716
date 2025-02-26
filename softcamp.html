@@ -26,6 +26,18 @@
       gtag('js', new Date());
 
       gtag('config', 'G-LCGJWRVV5Y');
+
+      document.addEventListener('DOMContentLoaded', () => {
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+  $navbarBurgers.forEach(el => {
+    el.addEventListener('click', () => {
+      const target = el.dataset.target;
+      const $target = document.getElementById(target);
+      el.classList.toggle('is-active');
+      $target.classList.toggle('is-active');
+    });
+  });
+});
     </script>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -39,6 +51,7 @@
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         color: #333;
         line-height: 1.6;
+        padding-top: 3.25rem;
       }
       
       h1, h2, h3, h4, h5, h6 {
@@ -601,6 +614,15 @@
         .title.is-1 {
           font-size: 2rem;
         }
+        
+        .navbar.is-fixed-top {
+        z-index: 30; 
+         }
+  
+        .section:first-of-type, 
+        .hero:first-of-type .hero-body {
+        padding-top: 5rem;
+         }
         
         .title.is-2 {
           font-size: 1.75rem;
