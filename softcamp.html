@@ -26,6 +26,23 @@
       gtag('js', new Date());
 
       gtag('config', 'G-LCGJWRVV5Y');
+
+      document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".faq-question").forEach(question => {
+                question.addEventListener("click", function () {
+                    const answer = this.nextElementSibling;
+                    const icon = this.querySelector("i");
+                    
+                    // Toggle visibility
+                    answer.classList.toggle("active");
+                    
+                    // Change icon direction
+                    icon.classList.toggle("fa-chevron-down");
+                    icon.classList.toggle("fa-chevron-up");
+                });
+            });
+        });
+
     </script>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -646,6 +663,38 @@
           max-height: 40px;
         }
       }
+
+      .faq-section {
+            max-width: 900px;
+            margin: auto;
+        }
+        .faq-title {
+            margin-bottom: 30px;
+        }
+        .faq-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .faq-question {
+            font-weight: bold;
+            cursor: pointer;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f0f0f0;
+            border-radius: 5px;
+        }
+        .faq-answer {
+            display: none;
+            padding: 15px;
+            background: #fff;
+            border-left: 4px solid #3273dc;
+            margin-top: 5px;
+        }
+        .faq-answer.active {
+            display: block;
+        }
     </style>
   </head>
 
@@ -928,14 +977,92 @@
           <p class="subtitle is-4">En sólo tres sencillos pasos podrás empezar a gestionar tu camping</p>
         </div>
         
-        <!-- Step 1 -->
-        <div class="columns is-vcentered mb-6">
-          <div class="column is-6-desktop order-2-mobile">
-            <div class="step-content">
-              <span class="step-number">1</span>
-              <h3 class="title is-3">Crea tu cuenta y configúrala</h3>
-              <p>Se creará simultáneamente la cuenta de usuario y negocio, siendo la primera ligada a ésta última.</p>
-              <p>Puedes configurar la cuenta para <strong>adaptar la gestión a tu forma de dirigir el negocio</strong>: temporadas, alojamientos, fechas de cierre, operativa, definición de servicios y características.</p>
-              <p>Una vez activada la cuenta podrás importar los datos de tu anterior negocio haciendo uso de la herramienta que ofrecemos para adaptarlo.</p>
+
+        <div class="cta-block no-border pt-30">
+          <div class="head-text">
+            <h3>¿Quieres ver más?</h3>
+            <p>Solicita acceso a una demo personalizada</p>
+          </div>
+          <div class="head-action">
+            <div class="buttons">
+              <a href="https://globodain.com/es-es/softcamp/demo" class="button primary-btn is-rounded raised action-button"
+                >Solicitar demo</a
+              >
+              <a href="mailto:office@globodain.com?subject=Pregunta%20sobre%20SoftCamp" class="button chat-button is-primary">Hablar con soporte</a>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section section-focus">
+      <div class="container ">
+        <!-- Clients -->
+        <div class="hero-foot pb-40">
+          <div class="container">
+            <div class="tabs partner-tabs is-centered">
+              <ul style="display: flex; flex-wrap: wrap; gap: 10px; list-style: none; padding: 0;">
+                <li>
+                  <a><img class="partner-logo" src="https://cdn-static.globodain.com/softcamp/website/collaborations/agoda" alt="Agoda" style="max-height: 50px; width: auto;" /></a>
+                </li>
+                <li>
+                  <a><img class="partner-logo" src="https://cdn-static.globodain.com/softcamp/website/collaborations/airbnb" alt="Airbnb" style="max-height: 50px; width: auto;" /></a>
+                </li>
+                <li>
+                  <a><img class="partner-logo" src="https://cdn-static.globodain.com/softcamp/website/collaborations/atrapalo" alt="Atrapalo" style="max-height: 50px; width: auto;" /></a>
+                </li>
+                <li>
+                  <a><img class="partner-logo" src="https://cdn-static.globodain.com/softcamp/website/collaborations/hotels" alt="Hotels" style="max-height: 50px; width: auto;" /></a>
+                </li>
+                <li>
+                  <a><img class="partner-logo" src="https://cdn-static.globodain.com/softcamp/website/collaborations/booking" alt="Booking" style="max-height: 50px; width: auto;" /></a>
+                </li>
+                <li>
+                  <a><img class="partner-logo" src="https://cdn-static.globodain.com/softcamp/website/collaborations/travelperk" alt="Travelperk" style="max-height: 50px; width: auto;" /></a>
+                </li>
+                <li>
+                  <a><img class="partner-logo" src="https://cdn-static.globodain.com/softcamp/website/collaborations/viajes-el-corte-ingles" alt="Viajes El Corte Inglés" style="max-height: 50px; width: auto;" /></a>
+                </li>
+                <li>
+                  <a><img class="partner-logo" src="https://cdn-static.globodain.com/softcamp/website/collaborations/pitchup" alt="Pitchup" style="max-height: 50px; width: auto;" /></a>
+                </li>
+                <li>
+                  <a><img class="partner-logo" src="https://cdn-static.globodain.com/softcamp/website/collaborations/luxury-escapes" alt="Luxury Escapes" style="max-height: 50px; width: auto;" /></a>
+                </li>
+              </ul>
+              
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 1 -->
+        <section class="section">
+          <div class="container faq-section">
+              <h2 class="title has-text-centered faq-title">Te resolvemos todas tus dudas</h2>
+              
+              <div class="faq-item">
+                  <div class="faq-question">¿Puedo probar el software de gestión? <i class="fas fa-chevron-down"></i></div>
+                  <div class="faq-answer">Puedes solicitar la <strong>creación de una cuenta demo</strong>. Conlleva el mismo proceso que el registro de una cuenta normal, pero con datos de ejemplo. <strong>La cuenta demo será editable, pero no usable</strong>. Contacta con el equipo de soporte para pasar de 'Demo' a 'Live'.</div>
+              </div>
+              
+              <div class="faq-item">
+                  <div class="faq-question">¿Qué coste tiene usar el software? <i class="fas fa-chevron-down"></i></div>
+                  <div class="faq-answer"><strong>El uso de SoftCamp es gratuito</strong> por tiempo ilimitado. La contratación de servicios de terceros o costes de transacción serán abonados por el negocio.</div>
+              </div>
+              
+              <div class="faq-item">
+                  <div class="faq-question">¿Cuál es la ventaja de SoftCamp sobre otros software de gestión? <i class="fas fa-chevron-down"></i></div>
+                  <div class="faq-answer">SoftCamp es un software <strong>especializado en la gestión de Campings</strong>, con tecnología avanzada que simplifica la administración y reduce el tiempo de aprendizaje.</div>
+              </div>
+              
+              <div class="faq-item">
+                  <div class="faq-question">¿Qué ocurre con mis datos? <i class="fas fa-chevron-down"></i></div>
+                  <div class="faq-answer">Tus datos son <strong>accesibles solo por el administrador</strong>. Puedes exportarlos en Excel o JSON, o solicitar acceso a la API de SoftCamp. El equipo de soporte solo tiene acceso a datos operativos esenciales.</div>
+              </div>
+              
+              <div class="faq-item">
+                  <div class="faq-question">¿Cuándo puedo empezar a utilizar la solución? <i class="fas fa-chevron-down"></i></div>
+                  <div class="faq-answer">Tu cuenta es revisada por nuestro equipo de soporte para verificar que cumple con las normativas legales. <b>El tiempo medio de activación es de 12 horas</b>, dependiendo de la documentación recibida.</div>
+              </div>
+          </div>
+      </section>
