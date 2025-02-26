@@ -72,26 +72,6 @@ export default function Footer() {
   return (
     <footer className="bg-white pt-16 pb-12">
       <div className="container mx-auto px-4">
-        {/* CTA Section */}
-        <div className="text-center mb-16">
-          <h3 className="text-3xl font-bold mb-2">¿A qué esperas para comenzar?</h3>
-          <p className="text-xl text-gray-600 mb-8">Solicita tu cuenta demo gratis ahora</p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a
-              href="https://globodain.com/es-es/softcamp/demo"
-              className="px-8 py-3 bg-primary text-white rounded-full shadow-lg hover:bg-primary-dark transition-colors duration-300 text-lg font-medium"
-            >
-              Obtén acceso a nuestra demo
-            </a>
-            <a
-              href="mailto:office@globodain.com?subject=Pregunta%20sobre%20SoftCamp"
-              className="px-8 py-3 border-2 border-primary text-primary rounded-full hover:bg-primary hover:text-white transition-colors duration-300 text-lg font-medium"
-              title="Envía un correo a office@globodain.com con el asunto 'Cuestión sobre SoftCamp'"
-            >
-              Pregúntanos
-            </a>
-          </div>
-        </div>
 
         {/* Main Footer Content */}
         <div className="grid md:grid-cols-12 gap-12 mb-12">

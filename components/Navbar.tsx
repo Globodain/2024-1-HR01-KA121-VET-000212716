@@ -23,12 +23,7 @@ export default function Navbar() {
 
           {/* Desktop menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/features" className="text-gray-700 hover:text-primary">
-              Características
-            </Link>
-            <Link href="/pricing" className="text-gray-700 hover:text-primary">
-              Precios
-            </Link>
+
             <Link href="/about" className="text-gray-700 hover:text-primary">
               Sobre Nosotros
             </Link>
