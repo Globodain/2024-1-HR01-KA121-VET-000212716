@@ -1,16 +1,20 @@
+import { Separator } from "../ui/separator";
+
 export default function OurMission() {
   return (
     <section className="py-16 bg-white">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-8">Our Mission</h2>
+        <h2 className="text-3xl font-bold mb-4">Nuestra Misión</h2>
+        <Separator className="w-24 h-1 bg-blue-600 mb-8" />
         <div className="grid md:grid-cols-2 gap-8">
           <div>
             <p className="text-gray-600">
-              SoftCamp is dedicated to delivering high-quality education in Java development and software testing. Our bootcamps combine intensive practical training with industry best practices, ensuring our graduates are ready for real-world challenges. We focus on hands-on experience, modern development tools, and comprehensive testing methodologies.
+              SoftCamp está dedicado a proporcionar soluciones de gestión eficientes para campings pequeños y medianos. Nuestro software combina herramientas intuitivas con funcionalidades avanzadas, asegurando que los gestores puedan optimizar su ocupación, automatizar tareas repetitivas y mejorar la experiencia del cliente. Nos centramos en ofrecer tecnología práctica que resuelve problemas reales del sector.
             </p>
           </div>
           <div className="bg-gray-100 rounded-lg p-6">
-            <h3 className="text-xl font-semibold mb-4">Our Impact</h3>
+            <h3 className="text-xl font-semibold mb-2">Nuestro Impacto</h3>
+            <Separator className="w-16 h-1 bg-blue-600 mb-4" />
             <div className="space-y-4">
               <div className="flex items-center">
                 <div className="text-blue-600 mr-3">
@@ -20,7 +24,7 @@ export default function OurMission() {
                 </div>
                 <div>
                   <p className="font-bold">200+</p>
-                  <p className="text-sm text-gray-600">Successful Graduates</p>
+                  <p className="text-sm text-gray-600">Campings Gestionados</p>
                 </div>
               </div>
               <div className="flex items-center">
@@ -31,7 +35,7 @@ export default function OurMission() {
                 </div>
                 <div>
                   <p className="font-bold">50+</p>
-                  <p className="text-sm text-gray-600">Real Projects Completed</p>
+                  <p className="text-sm text-gray-600">Mejoras Implementadas</p>
                 </div>
               </div>
               <div className="flex items-center">
@@ -42,25 +46,25 @@ export default function OurMission() {
                 </div>
                 <div>
                   <p className="font-bold">90%</p>
-                  <p className="text-sm text-gray-600">Job Placement Rate</p>
+                  <p className="text-sm text-gray-600">Tasa de Satisfacción</p>
                 </div>
               </div>
               <div className="flex items-center">
                 <div>
-                  <p className="font-bold">12+</p>
-                  <p className="text-sm text-gray-600">Bootcamp Sessions</p>
+                  <p className="font-bold">30%</p>
+                  <p className="text-sm text-gray-600">Aumento Promedio de Ocupación</p>
                 </div>
               </div>
               <div className="flex items-center">
                 <div>
-                  <p className="font-bold">100% </p>
-                    <p className="text-sm text-gray-600">Hands-on Training</p>
+                  <p className="font-bold">25% </p>
+                    <p className="text-sm text-gray-600">Reducción en Tareas Administrativas</p>
                 </div>
               </div>
               <div className="flex items-center">
                 <div>
-                  <p className="font-bold">85%</p>
-                  <p className="text-sm text-gray-600">Employment Success Rate</p>
+                  <p className="font-bold">15+</p>
+                  <p className="text-sm text-gray-600">Años de Experiencia en el Sector</p>
                 </div>
               </div>
             </div>

@@ -1,10 +1,13 @@
+import { Separator } from "../ui/separator";
+
 export default function AboutHero() {
   return (
-    <section className="py-20 px-4">
+    <section className="py-48 px-4">
       <div className="max-w-6xl mx-auto text-center">
-        <h1 className="text-5xl font-bold mb-6">Transform Your Career in Tech</h1>
+        <h1 className="text-5xl font-bold mb-6">Gestión Inteligente para tu Camping</h1>
+        <Separator className="w-24 h-1 mx-auto bg-blue-600 my-6" />
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          SoftCamp offers intensive bootcamps in Java Development and Software Testing. We specialize in transforming aspiring developers into industry-ready professionals through practical, hands-on training and real-world projects.
+          SoftCamp es un software especializado para campings pequeños y medianos, validado por expertos del sector. Con un 90% de satisfacción entre gestores, optimizamos tu ocupación y automatizamos tu gestión diaria.
         </p>
       </div>
     </section>

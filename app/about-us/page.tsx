@@ -9,7 +9,7 @@ import ContactSection from '../../components/about/ContactSection';
 
 export default function AboutUs() {
   return (
-    <main className='mr-7 ml-7 bg-gray-50'>
+    <main className=' bg-gray-50'>
       <Navbar />
       <AboutHero />
       <OurMission />

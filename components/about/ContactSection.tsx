@@ -1,15 +1,23 @@
+import { Separator } from "../ui/separator";
+import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+import { Button } from "../ui/button";
+
 export default function ContactSection() {
   return (
     <section className="py-16 bg-white">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-12 text-center">Contact Us</h2>
+        <h2 className="text-3xl font-bold mb-4 text-center">Contacto</h2>
+        <Separator className="w-24 h-1 mx-auto bg-blue-600 mb-12" />
         <div className="grid md:grid-cols-2 gap-12">
           <div>
-            <h3 className="text-xl font-semibold mb-4">Contact Information</h3>
+            <h3 className="text-xl font-semibold mb-2">Información de Contacto</h3>
+            <Separator className="w-16 h-0.5 bg-blue-600 mb-4" />
             <div className="space-y-4">
               <p className="flex items-center gap-2">
                 <span>📍</span>
-                <span>Pula, Croatia</span>
+                <span>Sevilla, España</span>
               </p>
               <p className="flex items-center gap-2">
                 <span>📧</span>
@@ -17,35 +25,49 @@ export default function ContactSection() {
               </p>
               <p className="flex items-center gap-2">
                 <span>🌐</span>
-                <span>www.softcamp.eu</span>
+                <span className="hover:text-primary-700"><a href="https://softcamp.eu">softcamp.eu</a></span>
+              </p>
+              <p className="flex items-center gap-2">
+                <span>📞</span>
+                <span>+34 900 123 456</span>
               </p>
             </div>
           </div>
           <div>
             <form className="space-y-4">
               <div>
-                <input
+                <Input 
                   type="text"
-                  placeholder="Your Name"
-                  className="w-full p-2 border rounded"
+                  placeholder="Su Nombre"
                 />
               </div>
               <div>
-                <input
+                <Input
                   type="email"
-                  placeholder="Your Email"
-                  className="w-full p-2 border rounded"
+                  placeholder="Su Email"
                 />
               </div>
               <div>
-                <textarea
-                  placeholder="Your Message"
-                  className="w-full p-2 border rounded h-32"
-                ></textarea>
+                <Select>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Seleccione un departamento" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="sales">Ventas</SelectItem>
+                    <SelectItem value="support">Soporte Técnico</SelectItem>
+                    <SelectItem value="demo">Solicitar Demo</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
-              <button className="bg-blue-600 text-white px-6 py-2 rounded">
-                Send Message
-              </button>
+              <div>
+                <Textarea
+                  placeholder="Su Mensaje"
+                  className="h-32"
+                />
+              </div>
+              <Button type="submit" className="bg-blue-600 hover:bg-blue-700">
+                Enviar Mensaje
+              </Button>
             </form>
           </div>
         </div>
