@@ -1,3 +1,5 @@
+import { Separator } from "./ui/separator";
+
 interface Feature {
   title: string;
   description: string;
@@ -55,9 +57,11 @@ export default function SideFeatures() {
               />
             </div>
             <div className="w-full md:w-5/12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                {feature.title}
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                <p className="pb-2">{feature.title}</p>
+                <Separator />
               </h2>
+
               <div className="text-gray-600 space-y-4">
                 {feature.description.split('\n\n').map((paragraph, idx) => (
                   <p key={idx} className="leading-relaxed">

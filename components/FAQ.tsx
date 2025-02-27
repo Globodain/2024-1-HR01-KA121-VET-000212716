@@ -1,5 +1,11 @@
 'use client';
-import { useState } from 'react';
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 interface FAQItem {
   question: string;
@@ -10,7 +16,7 @@ const faqItems: FAQItem[] = [
   {
     question: "¿Puedo probar el software de gestión?",
     answer: (
-      <p>Puedes socilitar la <strong>creación de una cuenta demo</strong>. Conlleva el mismo proceso que el registro de una cuenta normal, a diferencia de que ésta tendrá datos de ejemplo sobre reservas, clientes, pagos, transacciones, etcétera. <strong>La cuenta demo será editable, pero no usable</strong>. Contacta con el equipo de soporte para pasar de 'Demo' a 'Live' y poder utilizar el software de gestión sin problemas.</p>
+      <p>Puedes socilitar la <strong>creación de una cuenta demo</strong>. Conlleva el mismo proceso que el registro de una cuenta normal, a diferencia de que ésta tendrá datos de ejemplo sobre reservas, clientes, pagos, transacciones, etcétera. <strong>La cuenta demo será editable, pero no usable</strong>. Contacta con el equipo de soporte para pasar de &apos;Demo&apos; a &apos;Live&apos; y poder utilizar el software de gestión sin problemas.</p>
     )
   },
   {
@@ -77,48 +83,7 @@ const faqItems: FAQItem[] = [
   }
 ];
 
-const FAQItem = ({ question, answer, isOpen, onClick }: { 
-  question: string;
-  answer: React.ReactNode;
-  isOpen: boolean;
-  onClick: () => void;
-}) => {
-  return (
-    <div className="mb-4 border border-gray-200 rounded-lg overflow-hidden">
-      <button
-        className="w-full px-6 py-4 flex justify-between items-center bg-white hover:bg-gray-50 transition-colors duration-200"
-        onClick={onClick}
-      >
-        <span className="font-semibold text-left text-gray-800">{question}</span>
-        <span className={`transform transition-transform duration-200 ${isOpen ? 'rotate-45' : ''}`}>
-          <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-          </svg>
-        </span>
-      </button>
-      <div
-        className={`transition-all duration-200 ease-in-out ${
-          isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
-        } overflow-hidden`}
-      >
-        <div className="px-6 py-4 bg-white text-gray-600">
-          {answer}
-        </div>
-      </div>
-    </div>
-  );
-};
-
 export default function FAQ() {
-  const [openItems, setOpenItems] = useState<{ [key: number]: boolean }>({});
-
-  const toggleItem = (index: number) => {
-    setOpenItems(prev => ({
-      ...prev,
-      [index]: !prev[index]
-    }));
-  };
-
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -127,16 +92,21 @@ export default function FAQ() {
           <p className="text-xl text-gray-600">Te resolveremos todas tus dudas</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-          {faqItems.map((item, index) => (
-            <FAQItem
-              key={index}
-              question={item.question}
-              answer={item.answer}
-              isOpen={openItems[index] || false}
-              onClick={() => toggleItem(index)}
-            />
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+          <div className="md:col-span-2">
+            <Accordion type="single" collapsible className="w-full">
+              {faqItems.map((item, index) => (
+                <AccordionItem key={`faq-${index}`} value={`faq-${index}`} className="border border-gray-200 rounded-lg mb-4 overflow-hidden">
+                  <AccordionTrigger className="px-6 py-4 font-semibold text-gray-800 hover:bg-gray-50 hover:no-underline">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 py-4 text-gray-600">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
         </div>
 
         <div className="text-center mt-12">

@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,12 +22,6 @@ export default function Navbar() {
 
           {/* Desktop menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/features" className="text-gray-700 hover:text-primary">
-              Características
-            </Link>
-            <Link href="/pricing" className="text-gray-700 hover:text-primary">
-              Precios
-            </Link>
             <Link href="/about" className="text-gray-700 hover:text-primary">
               Sobre Nosotros
             </Link>

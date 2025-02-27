@@ -15,7 +15,7 @@ export default function Hero() {
         
         <Navbar />
 
-        <div className="relative z-10 flex items-center justify-center min-h-screen text-center px-4">
+        <div className="relative z-10 pt-40 flex items-center justify-center min-h-screen text-center px-4">
           <div className="container mx-auto max-w-6xl">
             <div className="flex flex-col items-center">
               <div className="max-w-4xl">
