@@ -11,7 +11,6 @@ export default function TeamSection() {
     {
       name: "Manuel Radaljac",
       role: "Director de Operaciones",
-      url: "https://manuelradaljac.com",
       image: "/team/manuel.jpg",
       description: "Especialista en Atención al Cliente"
     },
@@ -48,9 +47,6 @@ export default function TeamSection() {
               </div>
               <h3 className="text-xl font-semibold mb-1">{member.name}</h3>
               <p className="text-gray-600 font-medium">{member.role}</p>
-              {member.url && (
-                <a href={member.url} className="text-blue-600 hover:underline text-sm">{member.url}</a>
-              )}
               <Separator className="w-12 h-0.5 mx-auto bg-blue-600 my-2" />
               <p className="text-gray-500 text-sm mt-2">{member.description}</p>
             </div>
