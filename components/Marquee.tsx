@@ -32,29 +32,27 @@ export default function Marquee() {
         <div className="relative w-full max-w-[1800px] mx-auto overflow-hidden">
           <div className="flex">
             {/* First set of logos */}
-            <div className="flex animate-marquee gap-24 items-center min-w-full">
+            <div className="flex animate-marquee">
               {partners.map((partner) => (
-                <img
-                  key={partner.name}
-                  className="h-16 w-auto object-contain transition-transform duration-300 hover:scale-110 flex-shrink-0"
-                  src={partner.logo}
-                  alt={partner.name}
-                />
+                <div key={partner.name} className="w-[200px] flex items-center justify-center mx-2">
+                  <img
+                    className="h-16 w-auto object-contain transition-transform duration-300 hover:scale-110"
+                    src={partner.logo}
+                    alt={partner.name}
+                  />
+                </div>
               ))}
             </div>
-            {/* Clone the first set immediately after for seamless loop */}
-            <div 
-              className="flex animate-marquee gap-24 items-center min-w-full"
-              aria-hidden="true"
-              style={{ animationDelay: '-15s' }} // Half of the animation duration
-            >
+            {/* Clone set */}
+            <div className="flex animate-marquee">
               {partners.map((partner) => (
-                <img
-                  key={partner.name}
-                  className="h-16 w-auto object-contain transition-transform duration-300 hover:scale-110 flex-shrink-0"
-                  src={partner.logo}
-                  alt={partner.name}
-                />
+                <div key={partner.name} className="w-[200px] flex items-center justify-center mx-4">
+                  <img
+                    className="h-16 w-auto object-contain transition-transform duration-300 hover:scale-110"
+                    src={partner.logo}
+                    alt={partner.name}
+                  />
+                </div>
               ))}
             </div>
           </div>
