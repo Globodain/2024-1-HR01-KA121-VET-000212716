@@ -43,6 +43,53 @@
             });
         });
 
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+    const scrollContainer = document.querySelector(".scroll-container");
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    scrollContainer.addEventListener("mousedown", (e) => {
+      isDown = true;
+      scrollContainer.classList.add("active");
+      startX = e.pageX - scrollContainer.offsetLeft;
+      scrollLeft = scrollContainer.scrollLeft;
+    });
+
+    scrollContainer.addEventListener("mouseleave", () => {
+      isDown = false;
+      scrollContainer.classList.remove("active");
+    });
+
+    scrollContainer.addEventListener("mouseup", () => {
+      isDown = false;
+      scrollContainer.classList.remove("active");
+    });
+
+    scrollContainer.addEventListener("mousemove", (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - scrollContainer.offsetLeft;
+      const walk = (x - startX) * 2; // Speed
+      scrollContainer.scrollLeft = scrollLeft - walk;
+    });
+
+    scrollContainer.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+      scrollLeft = scrollContainer.scrollLeft;
+    });
+
+    scrollContainer.addEventListener("touchmove", (e) => {
+      const x = e.touches[0].clientX;
+      const walk = (x - startX) * 2;
+      scrollContainer.scrollLeft = scrollLeft - walk;
+    });
+  });
+
+
     </script>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -796,31 +843,25 @@
           <h2 class="title is-2">Características validadas por expertos</h2>
           <p class="subtitle is-4">Desarrollado basado en necesidades reales de gestores de camping</p>
         </div>
-        
-        <div class="columns is-multiline">
-          <div class="column is-6-desktop">
-            <div class="feature-card">
+    
+        <div class="scroll-container">
+          <div class="columns is-multiline is-flex-nowrap">
+            <div class="column is-6-desktop feature-card">
               <h3>Gestión Visual Intuitiva</h3>
               <p>Panel de control con mapa interactivo de parcelas y ocupación en tiempo real. Validado por el 95% de usuarios como "extremadamente útil".</p>
             </div>
-          </div>
-          
-          <div class="column is-6-desktop">
-            <div class="feature-card">
+    
+            <div class="column is-6-desktop feature-card">
               <h3>Reservas Optimizadas</h3>
               <p>Sistema de reservas que reduce errores en un 80% y aumenta la eficiencia en la gestión diaria. Integración con +450 canales de venta.</p>
             </div>
-          </div>
-          
-          <div class="column is-6-desktop">
-            <div class="feature-card">
+    
+            <div class="column is-6-desktop feature-card">
               <h3>Automatización Inteligente</h3>
               <p>Procesos automatizados que ahorran hasta 15 horas semanales en tareas administrativas. Incluye generación de informes y gestión de pagos.</p>
             </div>
-          </div>
-          
-          <div class="column is-6-desktop">
-            <div class="feature-card">
+    
+            <div class="column is-6-desktop feature-card">
               <h3>Control Financiero Total</h3>
               <p>Gestión financiera integrada con un 99.9% de precisión en facturación y cobros. Validado por departamentos contables de campings.</p>
             </div>
