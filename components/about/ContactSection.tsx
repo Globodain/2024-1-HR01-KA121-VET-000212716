@@ -65,7 +65,7 @@ export default function ContactSection() {
                   className="h-32"
                 />
               </div>
-              <Button type="submit" className="bg-blue-600 hover:bg-blue-700">
+              <Button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white">
                 Enviar Mensaje
               </Button>
             </form>
