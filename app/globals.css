@@ -43,7 +43,7 @@
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: 237 94% 54%;
+    --primary: 238 95% 54%;  /* Changed to #1a29f9 in HSL */
     --primary-foreground: 0 0% 98%;
     --secondary: 0 0% 96.1%;
     --secondary-foreground: 0 0% 9%;
@@ -55,7 +55,7 @@
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
-    --ring: 237 94% 54%;
+    --ring: 238 95% 54%;  /* Changed to match primary */
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
@@ -65,8 +65,13 @@
   }
 
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
+  
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring/50;
+  }
+  
   body {
     @apply bg-background text-foreground;
   }
